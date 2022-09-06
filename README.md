@@ -19,10 +19,10 @@
 ### 유니티로 구현한 레이아웃  
   
     
-\<Scene View>  
+<b>\<Scene View></b>  
 <img width="808" alt="image" src="https://user-images.githubusercontent.com/68889645/188370210-79ff8f6b-b378-49ab-b59e-7d32c4e63444.png">
 
-\<Game View>  
+<b>\<Game View></b>  
 <img width="606" alt="image" src="https://user-images.githubusercontent.com/68889645/188370812-221409df-4794-4ac1-b6ed-bf7753530748.png">
 
 
@@ -59,15 +59,25 @@
 
 ## 9/6
 
-\<Game View>  
-<img width="643" alt="image" src="https://user-images.githubusercontent.com/68889645/188599070-0f043427-d9b3-467a-89a7-9bc3a586fba0.png">
+<b>\<Game View></b>  
+<img width="659" alt="image" src="https://user-images.githubusercontent.com/68889645/188650284-e984a532-ec2e-45da-92b6-c014284339cb.png">
+
 
 
 위에 있는 UI 구상도 대로 레이아웃을 다시 짰다.  
 앵커를 다시 다 맞춰놔서 나름 여러 비율에서도 정상적으로 작동한다.  
 이제 UI를 갈아엎지만 않는다면 손본다고 고생할 일은 없을 듯..
 
+## 9/7  
 
+<b>\<Game View></b>  
+<img width="654" alt="image" src="https://user-images.githubusercontent.com/68889645/188673278-9da79b62-19d0-4e42-aae2-759a6bb9fd98.png">  
+남아있던 UI 레이아웃의 흔적을 가리고 깔끔하게 다듬었다.
+이제부턴 코드 작업에 들어가도 될 것 같다.  
+
+이번 게임에서는 MVP 패턴을 활용하여 이벤트 처리를 하고자 한다.  
+설명을 덧대자면, 게임 화면(View) <-> UI 매니저(프레젠터) <-> 게임 시스템(모델)의  
+관계가 되도록 프로그래밍을 하려한다.
 
 
 
