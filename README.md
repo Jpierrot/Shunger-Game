@@ -59,8 +59,8 @@
 
 ## 9/6
 
-\<Game View>
-<img width="643" alt="image" src="https://user-images.githubusercontent.com/68889645/188590363-1da123ca-7dc8-45bf-b6c8-f2bf6074dfdb.png">
+\<Game View>  
+<img width="643" alt="image" src="https://user-images.githubusercontent.com/68889645/188599070-0f043427-d9b3-467a-89a7-9bc3a586fba0.png">
 
 
 위에 있는 UI 구상도 대로 레이아웃을 다시 짰다.  
