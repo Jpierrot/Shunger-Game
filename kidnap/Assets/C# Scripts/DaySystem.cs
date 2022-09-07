@@ -22,13 +22,20 @@ namespace Kidnap
         [SerializeField]
         DayTime nextTime;
 
+        //현재 일자
+        int curDay = 1;
+        
+        //바뀌어야할 일자
         [SerializeField]
-        int DayCount = 1;
+        int nextDay;
 
         void Start()
         {
             nextTime = 0;
             curTime = nextTime;
+
+            nextDay = 1;
+            curDay = nextDay;
         }
 
         void ToNext()
@@ -36,8 +43,9 @@ namespace Kidnap
             if (curTime == DayTime.evening)
             {
                 nextTime = 0;
-                ++DayCount;
-                DayPresenter.Instance.OnDayChanged(DayCount);
+                ++nextDay;
+                curDay = nextDay;
+                DayPresenter.Instance.OnDayChanged(curDay);
             }
             else
                 nextTime++;
@@ -52,6 +60,12 @@ namespace Kidnap
             {
                 curTime = nextTime;
                 DayPresenter.Instance.OnTimeChanged(curTime);
+            }
+
+            if(curDay != nextDay)
+            {
+                curDay = nextDay;
+                DayPresenter.Instance.OnDayChanged(curDay);
             }
         }
 
