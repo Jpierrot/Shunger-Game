@@ -10,6 +10,9 @@ namespace Kidnap
     public class DayPresenter : Singleton<DayPresenter>
     {
 
+        [SerializeField]
+        private GameObject panel;
+
         //현재 View에 나타나 있는 아침,점심,저녁 이미지
         [SerializeField]
         private Image dayImage;
