@@ -60,9 +60,7 @@
 ## 9/6
 
 <b>\<Game View></b>  
-<img width="659" alt="image" src="https://user-images.githubusercontent.com/68889645/188650284-e984a532-ec2e-45da-92b6-c014284339cb.png">
-
-
+<img width="659" alt="image" src="https://user-images.githubusercontent.com/68889645/188650284-e984a532-ec2e-45da-92b6-c014284339cb.png">  
 
 위에 있는 UI 구상도 대로 레이아웃을 다시 짰다.  
 앵커를 다시 다 맞춰놔서 나름 여러 비율에서도 정상적으로 작동한다.  
@@ -79,6 +77,19 @@ UI에 관련한 부분은 MVP 패턴을 활용하여 이벤트 처리를 하는 
 간단하게 게임 화면(View) <-> UI 매니저(프레젠터) <-> 게임 시스템(모델)의  
 관계가 되도록 프로그래밍을 하면 된다.
 
+## 9/9 ~ 9/11  
+
+추석이라 쉬는중
+
+## 9/13  
+
+<img width="654" alt="image" src="https://user-images.githubusercontent.com/68889645/189850734-2e44f04c-4bad-4d3b-8de2-b8381edb964c.png">
+
+UI에 추가할 부분이 생겨서 새롭게 작업했다.  
+(사진들은 위키백과에서 발췌)
+
+그리고 새로운 폰트가 추가됐는데, 온라인에서 무료로 배포하는 폰트를 다운받아서  
+TMP 형식으로 바꿔 사용중이다.
 
 
 
