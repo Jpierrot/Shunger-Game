@@ -12,7 +12,7 @@ namespace Kidnap
         private static T m_Instance;
 
         /// <summary>
-            /// Access singleton instance through this propriety.
+            /// 이 프로퍼티를 통해서 싱글톤을 붙임
             /// </summary>
         public static T Instance
         {
@@ -29,18 +29,18 @@ namespace Kidnap
                 {
                     if (m_Instance == null)
                     {
-                        // Search for existing instance.
+                        // 인스턴스 존재 유무 탐색
                         m_Instance = (T)FindObjectOfType(typeof(T));
 
-                        // Create new instance if one doesn't already exist.
+                        // 없다면 새로 만듬
                         if (m_Instance == null)
                         {
-                            // Need to create a new GameObject to attach the singleton to.
+                            // 오브젝트를 싱글톤화 시킴
                             var singletonObject = new GameObject();
                             m_Instance = singletonObject.AddComponent<T>();
                             singletonObject.name = typeof(T).ToString() + " (Singleton)";
 
-                            // Make instance persistent.
+                            // 씬에서 파괴되지 않도록 설정
                             DontDestroyOnLoad(singletonObject);
                         }
                     }
