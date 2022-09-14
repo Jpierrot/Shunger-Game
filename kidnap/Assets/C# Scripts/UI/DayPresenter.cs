@@ -38,10 +38,5 @@ namespace Kidnap
             dayImage.sprite = dayImages[((int)dayTime)];
         }
 
-
-        void Update()
-        {
-            
-        }
     }
 }

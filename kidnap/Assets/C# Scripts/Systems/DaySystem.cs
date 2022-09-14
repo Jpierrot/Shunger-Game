@@ -54,6 +54,10 @@ namespace Kidnap
             DayPresenter.Instance.OnTimeChanged(curTime);
         }
 
+        /// <summary>
+        /// 테스트를 위해 업데이트로 판별.
+        /// 실제로 게임 동작시에는 사라질 코드
+        /// </summary>
         private void FixedUpdate()
         {
             if(curTime != nextTime)
@@ -68,9 +72,6 @@ namespace Kidnap
                 DayPresenter.Instance.OnDayChanged(curDay);
             }
         }
-
-
-
 
     }
 }
