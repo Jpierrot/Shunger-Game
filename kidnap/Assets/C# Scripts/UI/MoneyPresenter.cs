@@ -25,5 +25,10 @@ namespace Kidnap {
             moneyText.text = $"µ· : <b>{money}</b>" + won;
         }
 
+        private void Start()
+        {
+            
+        }
+
     }
 }
