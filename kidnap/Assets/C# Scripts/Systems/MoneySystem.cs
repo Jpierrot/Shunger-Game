@@ -19,8 +19,8 @@ namespace Kidnap
         void Start()
         {
             curMoney += startMoney;
-            //계산 발생 후 UI를 업데이트
             MoneyPresenter.Instance.OnChangeMoney(curMoney);
+            
         }
 
         // 돈 가산
