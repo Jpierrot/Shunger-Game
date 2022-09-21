@@ -9,10 +9,11 @@ namespace Kidnap
 
     public class CharPresenter : Singleton<CharPresenter>
     {
+
+        GameObject CharObj;
+
         [SerializeField]
         GameObject[] gameObjects;
-
-        List<Characters> character;
         
         void Start()
         {
@@ -25,20 +26,31 @@ namespace Kidnap
 
         }
 
-        void azzuulU()
+
+
+        public void SetCharacters(Characters [] characters)
         {
             for (int i = 0; i < gameObjects.Length; i++) {
-                gameObjects[i].GetComponent<Image>().sprite = character[i].characterImage;
-                gameObjects[i].GetComponent<TextMeshProUGUI>().text = character[i].characterName.text;
+                gameObjects[i].transform.GetChild(1).GetComponent<Image>().sprite = characters[i].characterImage;
+                gameObjects[i].transform.GetChild(2).GetComponent<TextMeshProUGUI>().text = characters[i].characterName;
             }
         }
+        
 
-
-
-        public void InfoUpdate(int num, Sprite image, TextMeshProUGUI name)
+        public void SetCharInfo(GameObject obj)
         {
-            character[num].characterImage = image;
-            character[num].characterName = name;
+            CharObj = obj;
+        }
+
+        [HideInInspector]
+        public string GetCharInfo()
+        {
+            return CharObj.name;
+        }
+
+        public void InfoUpdate(Sprite image, string name)
+        {
+            
         }
     }
 }
