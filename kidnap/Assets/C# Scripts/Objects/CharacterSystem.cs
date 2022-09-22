@@ -7,56 +7,74 @@ using TMPro;
 namespace Kidnap
 {
     [System.Serializable]
-    public class Characters
+    public struct Characters
     {
 
         public Sprite characterImage;
         public string characterName;
 
-
-        public Characters(int num, Sprite image, string name)
+        public Characters(Sprite image, string name)
         {
             characterImage = image;
             characterName = name;
-        } 
+        }
     }
 
-    public class CharacterSystem : MonoBehaviour
+    public class CharacterSystem : Singleton<CharacterSystem>
     {
-        [SerializeField]
-        List<Characters> characters;
 
-        Characters Player;
+        //다른 클래스에서 캐릭터 값을 참조할 리스트
+        public List<Characters> characters;
+
+        public Characters player;
+
+        public Characters Player
+        {
+            get
+            {
+                return player;
+            }
+
+            private set
+            {
+                player = value;
+            }
+        }
+
+        public void PlayerSet(int num)
+        {
+            player = characters[num - 1];
+        }
+
+
 
         private void Awake()
         {
             CharacterUpdate();
-            CharPresenter.Instance.SetCharacters(characters.ToArray());
+            DontDestroyOnLoad(this.gameObject);
         }
 
-        public void SetPlayer()
-        {
-            var a = CharPresenter.Instance.GetCharInfo();
-            int num = System.Convert.ToInt32(a);
-            Player = characters[num];
-        }
-
+        
         void CharacterUpdate()
         {
-            if (characters != null)
+            if (characters == null)
             {
-                for (int i = 0; i < characters.Count; i++)
-                {
-                    Debug.Log($"{i} 번째 캐릭터가 등록됨" +
-                        $"캐릭터 이름 : {characters[i].characterName}");
-                }
-            }
-            else
                 Debug.Log("캐릭터 데이터가 없습니다.");
+                return;
+            }
+            
+            /*    foreach(var value in characters)
+                {
+                    Debug.Log($"{characters.IndexOf(value) + 1} 번째 캐릭터가 등록됨" +
+                 $"캐릭터 이름 : {value.characterName}");
+                }*/
+
+            for (int i = 0; i < characters.Count; i++)
+            {
+                Debug.Log($"{i + 1} 번째 캐릭터가 등록됨\n" +
+                    $"캐릭터 이름 : {characters[i].characterName}");
+            }
         }
-
-
-
 
     }
 }
