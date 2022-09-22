@@ -35,10 +35,7 @@ namespace Kidnap
                 return player;
             }
 
-            private set
-            {
-                player = value;
-            }
+            private set => player = value;
         }
 
         public void PlayerSet(int num)
@@ -47,14 +44,12 @@ namespace Kidnap
         }
 
 
-
         private void Awake()
         {
             CharacterUpdate();
             DontDestroyOnLoad(this.gameObject);
         }
 
-        
         void CharacterUpdate()
         {
             if (characters == null)

@@ -12,7 +12,7 @@ namespace Kidnap
         evening
     }
 
-    public class DaySystem : MonoBehaviour
+    public class DaySystem : Singleton<DaySystem>
     {
         
         //현재 시간 상태

@@ -14,7 +14,12 @@ namespace Kidnap
         private GameObject CharObj;
 
         [SerializeField]
+        GameObject confirm;
+        
+        [SerializeField]
         GameObject[] gameObjects;
+
+        Image confirmImage;
 
         private int playerNum = 99;
 
@@ -22,6 +27,8 @@ namespace Kidnap
 
         private void Start()
         {
+            confirmImage = confirm.GetComponent<Image>();
+
             //순차정렬을 편하게 하기 위해서 List 형태로 있는 캐릭터 데이터를 배열로 받아옴.
             characters = CharacterSystem.Instance.characters.ToArray();
             CharactersSet();
@@ -32,6 +39,7 @@ namespace Kidnap
         /// </summary>
         public void CharactersSet()
         {
+
             if(gameObjects.Length != characters.Length)
             {
                 Debug.Log("인덱스 갯수가 일치하지 않음");
@@ -46,8 +54,22 @@ namespace Kidnap
 
         public void PlayerSet(int num)
         {
+            foreach (var i in gameObjects)
+            {
+
+                if (gameObjects[num] == i) 
+                { 
+                    i.transform.GetChild(0).gameObject.SetActive(true); 
+                }
+                else
+                    i.transform.GetChild(0).gameObject.SetActive(false);
+            }
+
             playerNum = num;
+            confirmImage.color = new Color(1 , (float)180 / 255 , (float)180 / 255, 1);
         }
+
+
 
         public void PlayerConfirm()
         {
