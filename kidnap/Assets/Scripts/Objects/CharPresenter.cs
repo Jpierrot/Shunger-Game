@@ -54,6 +54,8 @@ namespace Kidnap
 
         public void PlayerSet(int num)
         {
+
+            /*
             foreach (var i in gameObjects)
             {
 
@@ -64,8 +66,17 @@ namespace Kidnap
                 else
                     i.transform.GetChild(0).gameObject.SetActive(false);
             }
+            */
 
-            playerNum = num;
+            for(int i = 0; i < gameObjects.Length; i++)
+            {
+                if(i == num)
+                    gameObjects[i].transform.GetChild(0).gameObject.SetActive(true);
+                else
+                    gameObjects[i].transform.GetChild(0).gameObject.SetActive(false);
+            }
+
+            playerNum = num + 1;
             confirmImage.color = new Color(1 , (float)180 / 255 , (float)180 / 255, 1);
         }
 

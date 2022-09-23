@@ -12,6 +12,12 @@ namespace Kidnap
         evening
     }
 
+    /// <summary>
+    /// 구현 목록 : 
+    /// 1. 일자 넘기기
+    /// 2. 오전, 오후, 저녁 구분하기.
+    /// 3. 일자 데이터 저장하기
+    /// </summary>
     public class DaySystem : Singleton<DaySystem>
     {
         
@@ -22,6 +28,9 @@ namespace Kidnap
         [SerializeField]
         DayTime nextTime;
 
+        [SerializeField]
+        int StartDay;
+
         //현재 일자
         int curDay = 1;
         
@@ -31,46 +40,13 @@ namespace Kidnap
 
         void Start()
         {
-            nextTime = 0;
-            curTime = nextTime;
-
-            nextDay = 1;
-            curDay = nextDay;
+            curDay = StartDay;
+            curTime = DayTime.Morning;
         }
 
-        void ToNext()
+        void OverDay()
         {
-            if (curTime == DayTime.evening)
-            {
-                nextTime = 0;
-                ++nextDay;
-                curDay = nextDay;
-                DayPresenter.Instance.OnDayChanged(curDay);
-            }
-            else
-                nextTime++;
 
-            curTime = nextTime;
-            DayPresenter.Instance.OnTimeChanged(curTime);
-        }
-
-        /// <summary>
-        /// 테스트를 위해 업데이트로 판별.
-        /// 실제로 게임 동작시에는 사라질 코드
-        /// </summary>
-        private void FixedUpdate()
-        {
-            if(curTime != nextTime)
-            {
-                curTime = nextTime;
-                DayPresenter.Instance.OnTimeChanged(curTime);
-            }
-
-            if(curDay != nextDay)
-            {
-                curDay = nextDay;
-                DayPresenter.Instance.OnDayChanged(curDay);
-            }
         }
 
     }
