@@ -33,10 +33,6 @@ namespace Kidnap
 
         //현재 일자
         int curDay = 1;
-        
-        //바뀌어야할 일자
-        [SerializeField]
-        int nextDay;
 
         void Start()
         {
@@ -44,8 +40,17 @@ namespace Kidnap
             curTime = DayTime.Morning;
         }
 
-        void OverDay()
+        public void OverTime()
         {
+            if(curTime == DayTime.evening)
+            {
+                curTime = 0;
+                curDay++;
+                return;
+            }
+
+            curDay++;
+
 
         }
 
