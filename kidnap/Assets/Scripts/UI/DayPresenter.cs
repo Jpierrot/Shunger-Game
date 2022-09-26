@@ -6,36 +6,48 @@ using TMPro;
 
 namespace Kidnap
 {
-    //MVP에서 프레젠터를 담당하는 요소 
-    public class DayPresenter : Singleton<DayPresenter>
+    /// <summary>
+    /// Day System을 추적하는 프레젠터.
+    /// </summary>
+    public class DayPresenter : MonoBehaviour
     {
 
         [SerializeField]
-        private GameObject panel;
+        private GameObject _panel;
 
         //현재 View에 나타나 있는 아침,점심,저녁 이미지
         [SerializeField]
-        private Image dayImage;
+        private Image _dayImage;
 
         [SerializeField]
-        private Sprite [] dayImages;
+        private Sprite [] _dayImages;
 
         //오늘이 며칠인지 관한 텍스트
-        public TextMeshProUGUI dayText;
+        public TextMeshProUGUI DayText;
 
         void Start()
         {
+            CheckUI();
             //dayImage = GetComponent<Image>();
         }
 
-        public void OnDayChanged(int daycount)
+        public void OnActed(int daycount)
         {
-            dayText.text = "Day <b>" + daycount + "</b>";
+            DaySystem.Instance.OverTime();
+            CheckUI();
         }
 
-        public void OnTimeChanged(DayTime dayTime)
+        void CheckUI()
         {
-            dayImage.sprite = dayImages[((int)dayTime)];
+            DayText.text = $"<b>{DaySystem.Instance.curDay}</b> 일";
+            int num = (int)DaySystem.Instance.curTime;
+            _dayImage.sprite = _dayImages[num];
+        }
+
+        public void OnDayChanged()
+        {
+            DaySystem.Instance.OverDay();
+            CheckUI();
         }
 
     }

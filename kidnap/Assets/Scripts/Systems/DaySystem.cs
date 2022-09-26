@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 namespace Kidnap
-{
+{ 
 
     public enum DayTime
     {
@@ -22,17 +22,15 @@ namespace Kidnap
     {
         
         //현재 시간 상태
-        DayTime curTime;
+        [HideInInspector] public DayTime curTime;
 
         //바뀔 시간
-        [SerializeField]
-        DayTime nextTime;
+        [SerializeField] DayTime nextTime;
 
-        [SerializeField]
-        int StartDay;
+        [SerializeField] int StartDay;
 
         //현재 일자
-        int curDay = 1;
+        [HideInInspector] public int curDay = 1;
 
         void Start()
         {
@@ -40,6 +38,7 @@ namespace Kidnap
             curTime = DayTime.Morning;
         }
 
+        [HideInInspector]
         public void OverTime()
         {
             if(curTime == DayTime.evening)
@@ -48,11 +47,13 @@ namespace Kidnap
                 curDay++;
                 return;
             }
-
-            curDay++;
-
-
+            curTime++;
         }
 
+        [HideInInspector]
+        public void OverDay()
+        {
+            curDay++;
+        }
     }
 }

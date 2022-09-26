@@ -10,16 +10,14 @@ namespace Kidnap
     public class MoneySystem : MonoBehaviour
     {
         // 시작 금액
-        [SerializeField]
-        float startMoney;
+        [SerializeField] float startMoney;
 
         // 보유재화
-        float curMoney = 0;
+        [HideInInspector] public float curMoney;
 
         void Start()
         {
             curMoney += startMoney;
-            MoneyPresenter.Instance.OnChangeMoney(curMoney);
             
         }
 
