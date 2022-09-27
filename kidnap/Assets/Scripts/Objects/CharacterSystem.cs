@@ -41,8 +41,8 @@ namespace Kidnap
         public void PlayerSet(int num)
         {
             player = characters[num - 1];
-        }
 
+        }
 
         private void Awake()
         {
