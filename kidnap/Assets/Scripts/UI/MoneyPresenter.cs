@@ -8,21 +8,21 @@ namespace Kidnap {
     public class MoneyPresenter : Singleton<MoneyPresenter>
     {
         [SerializeField]
-        TextMeshProUGUI moneyText;
+        TextMeshProUGUI _moneyText;
 
-        float money;
+        float _money;
 
-        string won = "¾ï ¿ø";
+        string _won = "¾ï ¿ø";
 
         public void OnChangeMoney(float curMoney)
         {
-            money = curMoney;
-            MoneyToString(money);
+            _money = curMoney;
+            MoneyToString(_money);
         }
 
         void MoneyToString(float Money)
         {
-            moneyText.text = $"µ· : <b>{money}</b>" + won;
+            _moneyText.text = $"µ· : <b>{_money}</b>" + _won;
         }
 
         private void Start()
