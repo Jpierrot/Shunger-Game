@@ -42,6 +42,9 @@ namespace Kidnap
             DayText.text = $"<b>{DaySystem.Instance.curDay}</b> ¿œ";
             int num = (int)DaySystem.Instance.curTime;
             _dayImage.sprite = _dayImages[num];
+            var a = DaySystem.Instance.TimeColor((DayTime)num);
+            a.a = 1;
+            _panel.GetComponent<Image>().color = a;
         }
 
         public void OnDayChanged()

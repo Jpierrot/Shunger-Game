@@ -20,7 +20,9 @@ namespace Kidnap
     /// </summary>
     public class DaySystem : Singleton<DaySystem>
     {
-        
+        [SerializeField]
+        public Color[] DayColors = new Color[3];
+
         //현재 시간 상태
         [HideInInspector] public DayTime curTime;
 
@@ -54,6 +56,11 @@ namespace Kidnap
         public void OverDay()
         {
             curDay++;
+        }
+
+        public Color TimeColor(DayTime time)
+        {
+            return DayColors[(int)time];
         }
     }
 }
