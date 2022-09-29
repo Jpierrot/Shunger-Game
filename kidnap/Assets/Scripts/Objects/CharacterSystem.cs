@@ -9,14 +9,16 @@ namespace Kidnap
     [System.Serializable]
     public struct Characters
     {
+        public Chars type;
 
         public Sprite characterImage;
         public string characterName;
 
-        public Characters(Sprite image, string name)
+        public Characters(Sprite image, string name, Chars type)
         {
             characterImage = image;
             characterName = name;
+            this.type = type;
         }
     }
 
@@ -41,6 +43,7 @@ namespace Kidnap
         public void PlayerSet(int num)
         {
             player = characters[num - 1];
+            player.type = (Chars)(num - 1);
 
         }
 
