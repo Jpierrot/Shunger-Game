@@ -7,7 +7,7 @@ namespace Kidnap
     /// <summary>
     /// 화폐와 관련된 계산처리를 담당하는 코드
     /// </summary>
-    public class MoneySystem : MonoBehaviour
+    public class MoneySystem : Singleton<MoneySystem>
     {
         // 시작 금액
         [SerializeField] float startMoney;
