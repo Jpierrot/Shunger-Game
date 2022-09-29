@@ -55,19 +55,6 @@ namespace Kidnap
         public void PlayerSet(int num)
         {
 
-            /*
-            foreach (var i in gameObjects)
-            {
-
-                if (gameObjects[num] == i) 
-                { 
-                    i.transform.GetChild(0).gameObject.SetActive(true); 
-                }
-                else
-                    i.transform.GetChild(0).gameObject.SetActive(false);
-            }
-            */
-
             for(int i = 0; i < gameObjects.Length; i++)
             {
                 if(i == num)
