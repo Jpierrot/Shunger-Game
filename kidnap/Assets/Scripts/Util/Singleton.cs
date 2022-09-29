@@ -6,7 +6,6 @@ namespace Kidnap
 {
     public class Singleton<T> : MonoBehaviour where T : MonoBehaviour
     {
-
         private static bool m_ShuttingDown = false;
         private static object m_Lock = new object();
         private static T m_Instance;
@@ -60,7 +59,5 @@ namespace Kidnap
             m_ShuttingDown = true;
         }
     }
-
-
 }
 
