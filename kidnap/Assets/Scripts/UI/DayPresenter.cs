@@ -31,7 +31,7 @@ namespace Kidnap
             //dayImage = GetComponent<Image>();
         }
 
-        public void OnActed(int daycount)
+        public void OnActed()
         {
             DaySystem.Instance.OverTime();
             CheckUI();
