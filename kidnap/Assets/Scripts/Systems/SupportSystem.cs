@@ -11,6 +11,9 @@ namespace Kidnap
         A, B, C
     }
 
+    /// <summary>
+    /// 각 지역과 관련된 데이터를 담아낼 클래스
+    /// </summary>
     [System.Serializable]
     public class Country
     {
@@ -55,11 +58,17 @@ namespace Kidnap
 
         //for test
 
+        /// <summary>
+        /// 지지율을 반환해주는 메소드
+        /// </summary>
+        /// <param name="index"></param>
+        /// <returns></returns>
         public int GetSupportPerCent(int index)
         {
             return _supportPercent[index];
         }
 
+        // 선호하는 캐릭터를 반환해주는 메소드
         public int GetChar()
         {
             return (int)_favor;
@@ -121,6 +130,9 @@ namespace Kidnap
         [HideInInspector]
         public List<Country> Countries;
 
+        /// <summary>
+        /// 등록된 지역들을 리스트로 구현해주는 메소드
+        /// </summary>
         void SetCountries()
         {
             //지역별 리스트 생성하기
@@ -137,7 +149,6 @@ namespace Kidnap
                 Countries[i].CountryName = value;
                 Debug.Log(Countries[i].CountryName + $" 인덱스 : {i}");
             }
-
             Debug.Log("인덱스 정렬 끝");
         }
 

@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 
 namespace Kidnap {
+
     public class SceneController : MonoBehaviour
     {
         // Start is called before the first frame update

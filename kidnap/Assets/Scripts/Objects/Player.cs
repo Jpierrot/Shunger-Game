@@ -5,6 +5,7 @@ using TMPro;
 using UnityEngine.UI;
 
 namespace Kidnap {
+
     public class Player : MonoBehaviour
     {
         
