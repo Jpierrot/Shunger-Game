@@ -4,35 +4,42 @@ using UnityEngine;
 
 namespace Kidnap
 {
+
+    public enum Calc
+    {
+        plus,
+        minus
+    }
     /// <summary>
     /// 화폐와 관련된 계산처리를 담당하는 코드
     /// </summary>
     public class MoneySystem : Singleton<MoneySystem>
     {
         // 시작 금액
-        [SerializeField] float startMoney;
+        [SerializeField] int startMoney;
 
         // 보유재화
-        [HideInInspector] public float curMoney;
+        [HideInInspector] public int curMoney;
 
         void Start()
         {
             curMoney += startMoney;
-            
+
         }
 
-        // 돈 가산
-        void MoneyPlus(float addMoney)
+        // 돈 계산하는 함수
+        void MoneyCalc(int money, Calc type)
         {
-            curMoney += addMoney;
-            MoneyPresenter.Instance.OnChangeMoney(curMoney);
-        }
+            switch ((int)type)
+            {
+                case 0:
+                    curMoney += money;
+                    break;
+                case 1:
+                    curMoney -= money;
+                    break;
+            }
 
-        // 돈 차감
-        void MoneyMinus(float disMoney)
-        {
-            curMoney -= disMoney;
-            MoneyPresenter.Instance.OnChangeMoney(curMoney);
         }
     }
 }

@@ -23,7 +23,6 @@ namespace Kidnap
         {
             int per = SupportSystem.Instance.SupportCalc(CharacterSystem.Instance.player.type);
             _supportText.text = $"ÁöÁöÀ² : <b>{per}</b>%";
-
         }
 
         // Update is called once per frame
