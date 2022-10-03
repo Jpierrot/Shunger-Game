@@ -5,7 +5,7 @@ using TMPro;
 
 namespace Kidnap {
 
-    public class MoneyPresenter : Singleton<MoneyPresenter>
+    public class MoneyPresenter : MonoBehaviour
     {
         [SerializeField]
         TextMeshProUGUI _moneyText;
@@ -14,9 +14,9 @@ namespace Kidnap {
 
         string _won = "¾ï ¿ø";
 
-        public void OnChangeMoney(float curMoney)
+        void CheckMoney()
         {
-            _money = curMoney;
+            _money = MoneySystem.Instance.curMoney;
             MoneyToString(_money);
         }
 
@@ -27,7 +27,7 @@ namespace Kidnap {
 
         private void Start()
         {
-            
+            CheckMoney();
         }
 
     }

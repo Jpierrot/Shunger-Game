@@ -24,7 +24,6 @@ namespace Kidnap
         void Start()
         {
             curMoney += startMoney;
-
         }
 
         // 돈 계산하는 함수
