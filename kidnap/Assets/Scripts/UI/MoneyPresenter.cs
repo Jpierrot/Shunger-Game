@@ -10,7 +10,7 @@ namespace Kidnap {
         [SerializeField]
         TextMeshProUGUI _moneyText;
 
-        float _money;
+        int _money;
 
         string _won = "¾ï ¿ø";
 
@@ -20,7 +20,18 @@ namespace Kidnap {
             MoneyToString(_money);
         }
 
-        void MoneyToString(float Money)
+        public void PlusMoney(int money)
+        {
+            MoneySystem.Instance.MoneyCalc(money, Calc.plus);
+            CheckMoney();
+        }
+
+        public void MinusMoney(int money)
+        {
+            MoneySystem.Instance.MoneyCalc(money, Calc.minus);
+            CheckMoney();
+        }
+        void MoneyToString(int Money)
         {
             _moneyText.text = $"µ· : <b>{_money}</b>" + _won;
         }
