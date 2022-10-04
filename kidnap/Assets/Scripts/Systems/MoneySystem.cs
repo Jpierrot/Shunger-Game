@@ -16,18 +16,22 @@ namespace Kidnap
     public class MoneySystem : Singleton<MoneySystem>
     {
         // 시작 금액
-        [SerializeField] int startMoney;
+        [SerializeField] int startMoney { get; set; }
 
         // 보유재화
         [HideInInspector] public int curMoney;
 
-        void Start()
+        void Awake()
         {
             curMoney += startMoney;
         }
 
-        // 돈 계산하는 함수
-        void MoneyCalc(int money, Calc type)
+        /// <summary>
+        /// 화폐와 관련된 계산을 담당하는 함수
+        /// </summary>
+        /// <param name="money">계산할 금액</param>
+        /// <param name="type">연산 선택(더하기, 빼기 등)</param>
+        public void MoneyCalc(int money, Calc type)
         {
             switch ((int)type)
             {
