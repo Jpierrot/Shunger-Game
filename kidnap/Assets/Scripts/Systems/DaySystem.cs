@@ -34,7 +34,10 @@ namespace Kidnap
         //현재 일자
         [HideInInspector] public int curDay = 1;
 
-        void Start()
+        /// <summary>
+        /// 시스템에 관한 부분은 Awake에서 실행
+        /// </summary>
+        void Awake()
         {
             curDay = StartDay;
             curTime = DayTime.Morning;
