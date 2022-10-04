@@ -121,7 +121,9 @@ namespace Kidnap
         #endregion 
     }
 
-
+    /// <summary>
+    /// 게임 내 지지율에 관한 데이터를 다루는 클래스
+    /// </summary>
     public class SupportSystem : Singleton<SupportSystem>
     {
 
@@ -157,10 +159,10 @@ namespace Kidnap
         /// </summary>
         /// <param name="type">계산할 캐릭터</param>
         /// <returns></returns>
-        public int SupportCalc(Chars type)
+        public float SupportCalc(Chars type)
         {
 
-            int avg = 0;
+            float avg = 0;
 
             for(int i = 0; i < Countries.Count; i++)
                 avg += Countries[i].GetSupportPerCent((int)type);

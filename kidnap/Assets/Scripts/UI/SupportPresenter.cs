@@ -21,8 +21,8 @@ namespace Kidnap
 
         void UpdateSupport()
         {
-            int per = SupportSystem.Instance.SupportCalc(CharacterSystem.Instance.player.type);
-            _supportText.text = $"지지율 : <b>{per}</b>%";
+            float per = SupportSystem.Instance.SupportCalc(CharacterSystem.Instance.player.type);
+            _supportText.text = $"지지율 : <b>{per * 0.01f:P1}</b>";
         }
 
         // Update is called once per frame
