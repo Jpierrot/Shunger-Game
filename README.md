@@ -82,7 +82,7 @@ UI에 관련한 부분은 MVP 패턴을 활용하여 이벤트 처리를 하는 
 
 추석이라 쉬는중
 
-## 9/13  ~ 9/15
+## 9/13  ~ 9/15  
 
 <b>\<Game View></b>  
 <img width="654" alt="image" src="https://user-images.githubusercontent.com/68889645/189850734-2e44f04c-4bad-4d3b-8de2-b8381edb964c.png">
@@ -101,8 +101,8 @@ TMP 형식으로 바꿔 사용중이다.
 
 ## 9/19 ~ 9/22  
 
-<img width="464" alt="image" src="https://user-images.githubusercontent.com/68889645/191775405-840d6bff-1447-4bba-be02-fffef3b4f53a.png">  
-
+<b>\<GameScene></b>  
+<img width="464" alt="image" src="https://user-images.githubusercontent.com/68889645/191775405-840d6bff-1447-4bba-be02-fffef3b4f53a.png">    
 
 캐릭터 시스템을 구축 및 구현했다.
 엑셀 시트로 캐릭터 데이터를 받아서 가져오고 싶었으나..  
@@ -110,4 +110,34 @@ TMP 형식으로 바꿔 사용중이다.
    
 캐릭터 선택 기능 및 프로필 역시 MVP 패턴을 활용해 개발했다.
 
-## 9/22 ~ 9/25  
+## 9/22 ~ 9/26  
+
+지지율 시스템을 구현했다.  
+6개의 지역들이 모두 캐릭터별로 각기 다른 호감도와 지지율을 가지게 만들어  
+나름 개연성이 있도록 구현했다.(초기 값은 랜덤)  
+  
+<b>\<GameView></b>  
+<img width="195" alt="image" src="https://user-images.githubusercontent.com/68889645/194024951-223357a6-6da5-46d6-9ddb-f6755bfcf53b.png">  
+구현된 지지율이 뷰에서도 제대로 동작하는 모습
+
+
+## 9/27 ~ 9/28  
+
+기존 UI의 구현 방식이 기획에서 제시했던 방향과 맞지 않아
+알맞는 쪽으로 새롭게 고쳤다.
+
+제목 및 상단 UI바 같은 경우 일관성 있게 표시 되도록 바꿨고,
+픽셀이 늘어지는일도 없도록 수정했다.
+
+## 10/3 ~ 10/5
+
+지지율을 나타내는 그래프를 구현했다.
+
+<b>\<View></b>
+<img width="523" alt="image" src="https://user-images.githubusercontent.com/68889645/194026454-83ff8ab0-a6bc-4845-bf68-b54c74bb569f.png">
+
+
+
+
+
+
