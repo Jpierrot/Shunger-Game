@@ -6,8 +6,11 @@ using TMPro;
 
 namespace Kidnap
 {
+    /// <summary>
+    /// 데이터의 수정이 이루어지기 때문에 클래스가 적합
+    /// </summary>
     [System.Serializable]
-    public struct Characters
+    public class Characters
     {
         public Chars type;
 
@@ -43,7 +46,7 @@ namespace Kidnap
         public void PlayerSet(int num)
         {
             player = characters[num - 1];
-            player.type = (Chars)(num - 1);
+            player.type = characters[num - 1].type;
 
         }
 
@@ -51,6 +54,16 @@ namespace Kidnap
         {
             CharacterUpdate();
             DontDestroyOnLoad(this.gameObject);
+            SetCharacters();
+        }
+
+        void SetCharacters()
+        {
+
+            for(int i = 0; i < characters.Count; i++)
+            {
+                characters[i].type = (Chars)i;
+            }
         }
 
         void CharacterUpdate()
@@ -60,7 +73,6 @@ namespace Kidnap
                 Debug.Log("캐릭터 데이터가 없습니다.");
                 return;
             }
-            
             /*    foreach(var value in characters)
                 {
                     Debug.Log($"{characters.IndexOf(value) + 1} 번째 캐릭터가 등록됨" +

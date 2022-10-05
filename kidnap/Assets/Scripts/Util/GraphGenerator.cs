@@ -1,18 +1,85 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
-public class GraphGenerator : MonoBehaviour
-{
-    
-    void Start()
-    {
-        
-    }
 
-    // Update is called once per frame
-    void Update()
+namespace Kidnap {
+
+    public class GraphGenerator : MonoBehaviour
     {
-        
+        [SerializeField]
+        GameObject dot;
+
+        [SerializeField]
+        GameObject Line;
+
+        [SerializeField]
+        GameObject Lines_Parent;
+
+        [SerializeField]
+        GameObject dots_Parent;
+
+        [SerializeField]
+        RectTransform DotRect;
+
+        private float[] support = new float [9];
+
+        float _graphWidth;
+
+        float _graphHeight;
+
+        void DrawDots()
+        {
+            int num = DaySystem.Instance.curDay;
+
+            for (int i = 0; i < num; i++)
+            {
+                var a = Instantiate(dot, dots_Parent.transform, true);
+                a.transform.localScale = Vector3.one;
+             
+                RectTransform dotRT = a.GetComponent<RectTransform>();
+
+                var value = support[i] * 0.01f;
+
+                var x = (_graphWidth * 0.1f) * (i + 1) - _graphWidth * 0.5f;
+                var y = -_graphHeight * 0.5f + _graphHeight * value;
+
+                a.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = string.Format("{0:P1}", value);
+
+                dotRT.anchoredPosition = new Vector2(x, y);
+
+
+                if (i == 0 || num <= 1)
+                    continue;
+
+                var line = Instantiate(Line, Lines_Parent.transform, true);
+
+
+
+
+            }
+
+        }
+
+        public void Awake()
+        {
+            DaySystem.Instance.OverDayEvents.AddListener(plusGraph);
+            DaySystem.Instance.OverDayEvents.AddListener(DrawDots);
+        }
+
+        public void plusGraph()
+        {
+            support[DaySystem.Instance.curDay - 1] = SupportSystem.Instance.SupportCalc(CharacterSystem.Instance.player.type);
+        }
+
+        private void Start()
+        {
+            _graphHeight = DotRect.rect.height;
+            _graphWidth = DotRect.rect.width;
+            plusGraph();
+            DrawDots();
+        }
+
     }
 }

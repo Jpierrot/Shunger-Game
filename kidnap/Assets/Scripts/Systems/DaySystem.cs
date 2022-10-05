@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 namespace Kidnap
 { 
@@ -23,6 +24,10 @@ namespace Kidnap
         [SerializeField]
         public Color[] DayColors = new Color[3];
 
+        public UnityEvent OverDayEvents;
+
+        public UnityEvent StartDayEvents;
+
         //현재 시간 상태
         [HideInInspector] public DayTime curTime;
 
@@ -30,6 +35,8 @@ namespace Kidnap
         [SerializeField] DayTime nextTime;
 
         [SerializeField] int StartDay;
+
+        public int EndDay = 10;
 
         //현재 일자
         [HideInInspector] public int curDay = 1;
@@ -41,6 +48,7 @@ namespace Kidnap
         {
             curDay = StartDay;
             curTime = DayTime.Morning;
+            StartDayEvents.Invoke();
         }
 
         [HideInInspector]
@@ -49,12 +57,16 @@ namespace Kidnap
             if(curTime == DayTime.evening)
             {
                 curTime = 0;
-                curDay++;
+                OverDay();
+                OverDayEvents.Invoke();
                 return;
             }
             curTime++;
         }
 
+        /// <summary>
+        /// for test
+        /// </summary>
         [HideInInspector]
         public void OverDay()
         {

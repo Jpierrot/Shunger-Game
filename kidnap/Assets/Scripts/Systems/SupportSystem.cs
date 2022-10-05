@@ -33,8 +33,10 @@ namespace Kidnap
         //지지율
         private int[] _supportPercent = new int[3] { 0, 0, 0 };
 
+        //최저 지지율
         private int _minPercent = 15;
 
+        //총 호감도
         private int _allFavor = 0;
 
         #endregion
@@ -44,8 +46,7 @@ namespace Kidnap
         /// </summary>
         /// <param name="type">캐릭터를 지정</param>
         /// <param name="value">증감하는 호감도의 값</param>
-        public void SupportCheck(Chars type, int value)
-
+        public void SupportCalc(Chars type, int value)
            => Favorability[(int)type] += value;
 
 
@@ -56,16 +57,14 @@ namespace Kidnap
             SetSupport((int)_favor, _minPercent);
         }
 
-        //for test
-
         /// <summary>
         /// 지지율을 반환해주는 메소드
         /// </summary>
         /// <param name="index"></param>
         /// <returns></returns>
-        public int GetSupportPerCent(int index)
+        public int GetSupportPerCent(Chars type)
         {
-            return _supportPercent[index];
+            return _supportPercent[(int)type];
         }
 
         // 선호하는 캐릭터를 반환해주는 메소드
@@ -165,7 +164,7 @@ namespace Kidnap
             float avg = 0;
 
             for(int i = 0; i < Countries.Count; i++)
-                avg += Countries[i].GetSupportPerCent((int)type);
+                avg += Countries[i].GetSupportPerCent(type);
 
             avg /= Countries.Count;
 

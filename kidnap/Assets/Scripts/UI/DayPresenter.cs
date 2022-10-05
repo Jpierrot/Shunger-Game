@@ -25,8 +25,11 @@ namespace Kidnap
         //오늘이 며칠인지 관한 텍스트
         public TextMeshProUGUI DayText;
 
+        public TextMeshProUGUI GraphText;
+
         void Start()
         {
+            
             CheckUI();
             //dayImage = GetComponent<Image>();
         }
@@ -50,6 +53,7 @@ namespace Kidnap
         public void OnDayChanged()
         {
             DaySystem.Instance.OverDay();
+            GraphText.text = "(" + DaySystem.Instance.curDay + "일차)";
             CheckUI();
         }
 
