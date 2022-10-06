@@ -12,6 +12,8 @@
 
 개발 시작일 : 9 / 1
 
+***
+
 ## 9/1 ~ 9/2
 
 ### 개발 내용 기획 및 초기 아이디어 기록  
@@ -24,15 +26,15 @@
 <img width="808" alt="image" src="https://user-images.githubusercontent.com/68889645/188370210-79ff8f6b-b378-49ab-b59e-7d32c4e63444.png">
 
 <b>\<Game View></b>  
-<img width="606" alt="image" src="https://user-images.githubusercontent.com/68889645/188370812-221409df-4794-4ac1-b6ed-bf7753530748.png">
-
-
+<img width="606" alt="image" src="https://user-images.githubusercontent.com/68889645/188370812-221409df-4794-4ac1-b6ed-bf7753530748.png">  
 
 <b>Horizontal, Vertical Layout Group</b>(컴포넌트)을 활용해 큰 개념은 가로로 구분하고,  
 안에 작은 요소들은 세로로 정리했다. 안드로이드 스튜디오로 따지면 <b>Linear Layout</b>과 유사한 개념  
 이렇게 짜두면.. 그래도 어지간한 비율에서 다 호환된다.
 
 (주말은 쉬엄쉬엄)
+
+***
 
 ## 9/5
 
@@ -58,6 +60,8 @@
 스탯 같이 시각적인 요소가 필요한 정보의 경우 사용자가 필요할 때만 볼 수 있도록 수정했다.  
 (피그마로 만들었으면 훨씬 편했겠지만.. 기숙사에서 작업중이라 인터넷을 못 썼다)   
 
+***
+
 ## 9/6
 
 <b>\<Game View></b>  
@@ -66,6 +70,8 @@
 위에 있는 UI 구상도 대로 레이아웃을 다시 짰다.  
 앵커를 다시 다 맞춰놔서 나름 여러 비율에서도 정상적으로 작동한다.  
 이제 UI를 갈아엎지만 않는다면 손본다고 고생할 일은 없을 듯..
+
+***
 
 ## 9/7  
 
@@ -78,11 +84,15 @@ UI에 관련한 부분은 MVP 패턴을 활용하여 이벤트 처리를 하는 
 간단하게 게임 화면(View) <-> UI 매니저(프레젠터) <-> 게임 시스템(모델)의  
 관계가 되도록 프로그래밍을 하면 된다.
 
+***
+
 ## 9/9 ~ 9/12  
 
 추석이라 쉬는중
 
-## 9/13  ~ 9/15
+***
+
+## 9/13  ~ 9/15  
 
 <b>\<Game View></b>  
 <img width="654" alt="image" src="https://user-images.githubusercontent.com/68889645/189850734-2e44f04c-4bad-4d3b-8de2-b8381edb964c.png">
@@ -93,16 +103,19 @@ UI에 추가할 부분이 생겨서 새롭게 작업했다.
 그리고 사진을 보면 새로운 폰트가 추가됐는데, 온라인에서 무료로 배포하는 폰트를 다운받아서  
 TMP 형식으로 바꿔 사용중이다.
 
+***
+
 ## 9/16  
 
 화폐 거래 시스템을 만들었다.  
 현재는 구매 기능만 가능하다.
 
+***
 
 ## 9/19 ~ 9/22  
 
-<img width="464" alt="image" src="https://user-images.githubusercontent.com/68889645/191775405-840d6bff-1447-4bba-be02-fffef3b4f53a.png">  
-
+<b>\<GameScene></b>  
+<img width="464" alt="image" src="https://user-images.githubusercontent.com/68889645/191775405-840d6bff-1447-4bba-be02-fffef3b4f53a.png">    
 
 캐릭터 시스템을 구축 및 구현했다.
 엑셀 시트로 캐릭터 데이터를 받아서 가져오고 싶었으나..  
@@ -110,4 +123,58 @@ TMP 형식으로 바꿔 사용중이다.
    
 캐릭터 선택 기능 및 프로필 역시 MVP 패턴을 활용해 개발했다.
 
-## 9/22 ~ 9/25  
+***
+
+## 9/22 ~ 9/26  
+
+지지율 시스템을 구현했다.  
+6개의 지역들이 모두 캐릭터별로 각기 다른 호감도와 지지율을 가지게 만들어  
+나름 개연성이 있도록 구현했다.(초기 값은 랜덤)  
+  
+<b>\<GameView></b>  
+<img width="195" alt="image" src="https://user-images.githubusercontent.com/68889645/194024951-223357a6-6da5-46d6-9ddb-f6755bfcf53b.png">  
+구현된 지지율이 뷰에서도 제대로 동작하는 모습
+
+***
+
+## 9/27 ~ 9/28  
+
+<b>\<GameView></b>  
+<img width="660" alt="image" src="https://user-images.githubusercontent.com/68889645/194261307-c684222c-e24a-451a-9e99-b2b0bb5973fb.png">
+조금 바뀐 인 게임 화면 이미지
+
+
+<b>\<GameView></b>  
+<img width="655" alt="image" src="https://user-images.githubusercontent.com/68889645/194261594-79308c36-743b-4edf-9597-4fde5ba7f42b.png">
+새롭게 들어간 타이틀 화면    
+
+
+
+기존 UI의 구현 방식이 기획에서 제시했던 방향과 맞지 않아
+알맞는 쪽으로 새롭게 고쳤다.
+
+제목 및 상단 UI바 같은 경우 일관성 있게 표시 되도록 바꿨고,
+픽셀이 늘어지는일도 없도록 수정했다.
+
+***
+
+## 10/3 ~ 10/5
+
+<b>\<View></b>  
+<img width="523" alt="image" src="https://user-images.githubusercontent.com/68889645/194026454-83ff8ab0-a6bc-4845-bf68-b54c74bb569f.png">  
+<img width="647" alt="image" src="https://user-images.githubusercontent.com/68889645/194263192-8d154319-c2c1-4a3d-b7c8-fc9d40114fb0.png">
+
+
+지지율을 나타내는 그래프를 구현했다.
+
+지금은 기존에 있던 시스템 코드에서 데이터를 받아오는 방식으로 구현했는데
+인터페이스를 활용하면 더 깔끔하게 구현이 가능할 것 같다.
+지금은 구현이 먼저니 나중에..
+
+
+
+
+
+
+
+
