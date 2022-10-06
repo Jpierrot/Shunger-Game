@@ -162,6 +162,8 @@ TMP 형식으로 바꿔 사용중이다.
 
 <b>\<View></b>  
 <img width="523" alt="image" src="https://user-images.githubusercontent.com/68889645/194026454-83ff8ab0-a6bc-4845-bf68-b54c74bb569f.png">  
+<img width="647" alt="image" src="https://user-images.githubusercontent.com/68889645/194263192-8d154319-c2c1-4a3d-b7c8-fc9d40114fb0.png">
+
 
 지지율을 나타내는 그래프를 구현했다.
 
