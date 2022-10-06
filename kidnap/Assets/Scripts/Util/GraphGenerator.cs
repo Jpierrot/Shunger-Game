@@ -23,14 +23,24 @@ namespace Kidnap {
         [SerializeField]
         RectTransform DotRect;
 
-        private float[] support = new float [9];
+        private float[] support = new float[10];
 
         float _graphWidth;
 
         float _graphHeight;
 
+        void DestroyDots()
+        {
+            for(int i = 0; i < dots_Parent.transform.childCount; i++)
+            {
+                Destroy(dots_Parent.transform.GetChild(i).gameObject);
+            }
+        }
+
         void DrawDots()
         {
+            DestroyDots();
+
             int num = DaySystem.Instance.curDay;
 
             for (int i = 0; i < num; i++)
@@ -42,22 +52,14 @@ namespace Kidnap {
 
                 var value = support[i] * 0.01f;
 
-                var x = (_graphWidth * 0.1f) * (i + 1) - _graphWidth * 0.5f;
+                var x = -_graphWidth * 0.5f + (_graphWidth * 0.09f) * (i + 1) + 12.5f;
                 var y = -_graphHeight * 0.5f + _graphHeight * value;
 
                 a.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = string.Format("{0:P1}", value);
 
                 dotRT.anchoredPosition = new Vector2(x, y);
 
-
-                if (i == 0 || num <= 1)
-                    continue;
-
-                var line = Instantiate(Line, Lines_Parent.transform, true);
-
-
-
-
+                //var line = Instantiate(Line, Lines_Parent.transform, true);
             }
 
         }
