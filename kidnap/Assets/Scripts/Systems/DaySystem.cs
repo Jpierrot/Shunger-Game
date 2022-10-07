@@ -13,6 +13,11 @@ namespace Kidnap
         evening
     }
 
+    public interface DayCheckable
+    {
+        
+    }
+
     /// <summary>
     /// 구현 목록 : 
     /// 1. 일자 넘기기
