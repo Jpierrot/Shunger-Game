@@ -1,4 +1,0 @@
-repository "kidnap@aiur13@cloud"
-  path "/"
-    br "/main"
-    co "/main"
