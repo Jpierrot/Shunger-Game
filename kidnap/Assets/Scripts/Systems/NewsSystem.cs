@@ -44,22 +44,6 @@ namespace Kidnap
             return path;
         }
 
-        IEnumerator MessageWriter()
-        {
-            int count = 0;
-            texts = System.IO.File.ReadAllLines(path);
-
-            while (true)
-            {
-                text = texts[count];
-                yield return new WaitForSecondsRealtime(5f);
-                count++;
-
-                if (count == texts.Length) count = 0;
-            }
-
-        }
-
     }
 
 }

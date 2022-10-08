@@ -33,10 +33,14 @@ namespace Kidnap {
                 _path = NewsSystem.Instance.GetText(DaySystem.Instance.curTime);
                 _texts = System.IO.File.ReadAllLines(_path);
 
-                var a = Instantiate(TextObj, parent);
+                if (parent.transform.childCount < 1)
+                {
+                    var a = Instantiate(TextObj, parent);
+                    a.GetComponent<TextMeshProUGUI>().text = _texts[Random.Range(0, _texts.Length - 1)];
+                }
 
-                a.GetComponent<TextMeshProUGUI>().text = _texts[Random.Range(0, _texts.Length - 1)];
-                yield return new WaitForSecondsRealtime(time);
+                
+                yield return new WaitForSecondsRealtime(1);
             }
         }
     }

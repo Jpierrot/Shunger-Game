@@ -12,17 +12,24 @@ public class news : MonoBehaviour
     float moveSpeed1;
 
     RectTransform Rect;
+    RectTransform rect2;
 
     void Start()
     {
+        rect2 = transform.parent.transform.GetComponent<RectTransform>();
         Rect = transform.GetComponent<RectTransform>();
         Destroy(gameObject, DeleteTime);
     }
 
-    void Update()
+    void FixedUpdate()
     {
-        
-            Rect.Translate(Vector2.left * moveSpeed1);
+        if(Rect.anchoredPosition.x <= -rect2.rect.width)
+        {
+            Destroy(gameObject);
+        }
+
+
+        Rect.Translate(Vector2.left * moveSpeed1);
        
         
     }
