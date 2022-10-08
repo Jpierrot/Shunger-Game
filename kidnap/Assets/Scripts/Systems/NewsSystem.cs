@@ -18,7 +18,7 @@ namespace Kidnap
 
         void Awake()
         {
-            StartCoroutine(MessageWriter());
+            
         }
 
         void Update()

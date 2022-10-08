@@ -8,32 +8,35 @@ namespace Kidnap {
     public class NewsPresenter : MonoBehaviour
     {
         [SerializeField]
-        TextMeshProUGUI text;
+        Transform parent;
+
+        [SerializeField]
+        GameObject TextObj;
 
         [SerializeField]
         int time;
 
-        string[] texts;
-        string path;
+        string[] _texts;
+
+        string _path;
+
 
         void Start()
         {
             StartCoroutine(CheckMessage());
         }
 
-        private void Update()
-        {
-            
-        }
-
         IEnumerator CheckMessage()
         {
             while (true)
             {
-                path = NewsSystem.Instance.GetText(DaySystem.Instance.curTime);
-                texts = System.IO.File.ReadAllLines(path);
-                text.text = texts[Random.Range(0, texts.Length - 1)];
-                yield return new WaitForSeconds(time);
+                _path = NewsSystem.Instance.GetText(DaySystem.Instance.curTime);
+                _texts = System.IO.File.ReadAllLines(_path);
+
+                var a = Instantiate(TextObj, parent);
+
+                a.GetComponent<TextMeshProUGUI>().text = _texts[Random.Range(0, _texts.Length - 1)];
+                yield return new WaitForSecondsRealtime(time);
             }
         }
     }
