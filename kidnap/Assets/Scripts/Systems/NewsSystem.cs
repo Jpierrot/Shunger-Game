@@ -10,21 +10,9 @@ namespace Kidnap
     public class NewsSystem : Singleton<NewsSystem>
     {
 
-        public string text;
-
         string path = @"C:\Users\user2\Desktop\Jpie\UnityPractice\Shunger-Game\kidnap\Assets\Texts\Afternoon.txt";
 
         string[] texts;
-
-        void Awake()
-        {
-            
-        }
-
-        void Update()
-        {
-
-        }
 
         public string GetText(DayTime time)
         {

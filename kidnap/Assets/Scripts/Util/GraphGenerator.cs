@@ -72,7 +72,7 @@ namespace Kidnap {
 
         public void plusGraph()
         {
-            support[DaySystem.Instance.curDay - 1] = SupportSystem.Instance.SupportCalc(CharacterSystem.Instance.player.type);
+            support[DaySystem.Instance.curDay - 1] = CountrySystem.Instance.SupportCalc(CharacterSystem.Instance.player.type);
         }
 
         private void Start()

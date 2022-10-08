@@ -37,7 +37,7 @@ namespace Kidnap
         {
             foreach (var i in charts)
             {
-                float value = SupportSystem.Instance.SupportCalc((Chars)charts.IndexOf(i)) * 0.01f;
+                float value = CountrySystem.Instance.SupportCalc((Chars)charts.IndexOf(i)) * 0.01f;
                 i.Slider.value = value;
                 i.Name.text = CharacterSystem.Instance.characters[charts.IndexOf(i)].characterName;
                 i.score.text = string.Format("{0:P1}", value);
