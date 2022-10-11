@@ -122,7 +122,7 @@ namespace Kidnap
     public class CountrySystem : Singleton<CountrySystem>
     {
 
-        public List<CountryDatas> CountryDatas;
+        public List<CountryDatas> CDlist;
 
         [HideInInspector]
         public List<Country> Countries;
@@ -133,15 +133,14 @@ namespace Kidnap
         void SetCountries()
         {
             //지역별 리스트 생성하기
-            for (int i = 0; i < CountryDatas.Count; i++)
+            for (int i = 0; i < CDlist.Count; i++)
             {
                 Countries.Add(new Country());
                 Countries[i].Init();
-
             }
 
             //Linq를 이용한 foreach구문 인덱스 구하기
-            foreach (var (value, i) in CountryDatas.Select((value, i) => (value, i)))
+            foreach (var (value, i) in CDlist.Select((value, i) => (value, i)))
             {
                 Countries[i].CountryName = value.CountryName;
                 Debug.Log(Countries[i].CountryName + $" 인덱스 : {i}");
