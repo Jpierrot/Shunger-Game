@@ -38,7 +38,6 @@ namespace Kidnap {
                     var a = Instantiate(TextObj, parent);
                     a.GetComponent<TextMeshProUGUI>().text = _texts[Random.Range(0, _texts.Length - 1)];
                 }
-
                 
                 yield return new WaitForSecondsRealtime(1);
             }

@@ -1,22 +1,11 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using EnumTypes;
 using UnityEngine.Events;
 
 namespace Kidnap
 { 
-
-    public enum DayTime
-    {
-        Morning,
-        Afternoon,
-        evening
-    }
-
-    public interface DayCheckable
-    {
-        
-    }
 
     /// <summary>
     /// 구현 목록 : 
@@ -29,8 +18,10 @@ namespace Kidnap
         [SerializeField]
         public Color[] DayColors = new Color[3];
 
+        //하루가 넘어갈 때 마다 동작할 메소드 
         public UnityEvent OverDayEvents;
 
+        //하루가 처음 시작할 때 동작할 메소드
         public UnityEvent StartDayEvents;
 
         //현재 시간 상태
@@ -39,8 +30,10 @@ namespace Kidnap
         //바뀔 시간
         [SerializeField] DayTime nextTime;
 
+        //시작하는 날짜
         [SerializeField] int StartDay;
 
+        //게임이 끝나는 날짜
         public int EndDay = 10;
 
         //현재 일자

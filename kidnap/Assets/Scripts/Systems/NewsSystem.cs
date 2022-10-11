@@ -1,18 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using EnumTypes;
 
 namespace Kidnap
 {
-
-    
-
     public class NewsSystem : Singleton<NewsSystem>
     {
 
         string path = @"C:\Users\user2\Desktop\Jpie\UnityPractice\Shunger-Game\kidnap\Assets\Texts\Afternoon.txt";
-
-        string[] texts;
 
         public string GetText(DayTime time)
         {

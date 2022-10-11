@@ -2,15 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
+using StructTypes;
+using EnumTypes;
 
 namespace Kidnap
 {
-    // 캐릭터 종류를 나타낸 enum
-    public enum Chars
-    {
-        A, B, C
-    }
-
     /// <summary>
     /// 각 지역과 관련된 호감도를 담아낼 클래스
     /// </summary>
@@ -169,7 +165,6 @@ namespace Kidnap
                 avg += Countries[i].GetSupportPerCent(type);
 
             avg /= Countries.Count;
-
 
             return avg;
         }

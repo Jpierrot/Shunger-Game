@@ -1,9 +1,10 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using StructTypes;
 using UnityEngine.UI;
 
-namespace Kidnap { 
+namespace StructTypes { 
 
 [System.Serializable]
 public struct CountryDatas

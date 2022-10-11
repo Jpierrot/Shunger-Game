@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using EnumTypes;
 using UnityEngine.UI;
 using TMPro;
 
@@ -33,6 +34,14 @@ namespace Kidnap
         [SerializeField]
         public List<Charts> charts;
 
+        void Start()
+        {
+            SetPer();
+        }
+
+        /// <summary>
+        /// 그래프안에 있는 인덱스들의 값을 받아오는 메소드
+        /// </summary>
         void SetPer()
         {
             foreach (var i in charts)
@@ -42,18 +51,6 @@ namespace Kidnap
                 i.Name.text = CharacterSystem.Instance.characters[charts.IndexOf(i)].characterName;
                 i.score.text = string.Format("{0:P1}", value);
             }
-        }
-
-        // Start is called before the first frame update
-        void Start()
-        {
-            SetPer();
-        }
-
-        // Update is called once per frame
-        void Update()
-        {
-
         }
     }
 }
