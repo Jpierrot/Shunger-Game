@@ -6,21 +6,28 @@ using TMPro;
 
 namespace Kidnap {
 
+    /// <summary>
+    /// 선 그래프를 그리는 클래스
+    /// </summary>
     public class GraphGenerator : MonoBehaviour
     {
+        // 점 오브젝트
         [SerializeField]
         GameObject dot;
 
+        // 선 오브젝트
         [SerializeField]
         GameObject Line;
 
+        // 선 오브젝트들의 부모 오브젝트
         [SerializeField]
         GameObject Lines_Parent;
 
+        // 점 오브젝트들의 부모 오브젝트
         [SerializeField]
         GameObject dots_Parent;
 
-        [SerializeField]
+        // 점의 좌표
         RectTransform DotRect;
 
         private float[] support = new float[10];
@@ -72,7 +79,7 @@ namespace Kidnap {
 
         public void plusGraph()
         {
-            support[DaySystem.Instance.curDay - 1] = SupportSystem.Instance.SupportCalc(CharacterSystem.Instance.player.type);
+            support[DaySystem.Instance.curDay - 1] = CountrySystem.Instance.SupportCalc(CharacterSystem.Instance.player.type);
         }
 
         private void Start()

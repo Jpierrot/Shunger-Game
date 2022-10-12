@@ -1,13 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using EnumTypes;
 using UnityEngine.UI;
 using TMPro;
 
 namespace Kidnap
 {
     /// <summary>
-    /// Day System을 추적하는 프레젠터.
+    /// DaySystem에 있는 데이터와 UI를 연결하는 프레젠터.
     /// </summary>
     public class DayPresenter : MonoBehaviour
     {
@@ -28,18 +29,22 @@ namespace Kidnap
         public TextMeshProUGUI GraphText;
 
         void Start()
-        {
-            
+        { 
             CheckUI();
-            //dayImage = GetComponent<Image>();
         }
 
+        /// <summary>
+        /// 행동력을 소모할때마다 시간대를 변경하는 메소드
+        /// </summary>
         public void OnActed()
         {
             DaySystem.Instance.OverTime();
             CheckUI();
         }
 
+        /// <summary>
+        /// UI 업데이트를 담당하는 메소드
+        /// </summary>
         void CheckUI()
         {
             DayText.text = $"<b>{DaySystem.Instance.curDay}</b> 일";
@@ -50,6 +55,9 @@ namespace Kidnap
             _panel.GetComponent<Image>().color = a;
         }
 
+        /// <summary>
+        /// 날짜 변경
+        /// </summary>
         public void OnDayChanged()
         {
             DaySystem.Instance.OverDay();

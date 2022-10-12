@@ -2,17 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
+using StructTypes;
+using EnumTypes;
 
 namespace Kidnap
 {
-    // 캐릭터 종류를 나타낸 enum
-    public enum Chars
-    {
-        A, B, C
-    }
-
     /// <summary>
-    /// 각 지역과 관련된 데이터를 담아낼 클래스
+    /// 각 지역과 관련된 호감도를 담아낼 클래스
     /// </summary>
     [System.Serializable]
     public class Country
@@ -121,12 +117,12 @@ namespace Kidnap
     }
 
     /// <summary>
-    /// 게임 내 지지율에 관한 데이터를 다루는 클래스
+    /// 게임 내 지역(+ 지지율)에 관한 데이터를 다루는 클래스
     /// </summary>
-    public class SupportSystem : Singleton<SupportSystem>
+    public class CountrySystem : Singleton<CountrySystem>
     {
 
-        public string[] CountryNames;
+        public List<CountryDatas> CDlist;
 
         [HideInInspector]
         public List<Country> Countries;
@@ -137,20 +133,21 @@ namespace Kidnap
         void SetCountries()
         {
             //지역별 리스트 생성하기
-            for (int i = 0; i < CountryNames.Length; i++)
+            for (int i = 0; i < CDlist.Count; i++)
             {
                 Countries.Add(new Country());
                 Countries[i].Init();
-
             }
 
             //Linq를 이용한 foreach구문 인덱스 구하기
-            foreach (var (value, i) in CountryNames.Select((value, i) => (value, i)))
+            foreach (var (value, i) in CDlist.Select((value, i) => (value, i)))
             {
-                Countries[i].CountryName = value;
+                Countries[i].CountryName = value.CountryName;
                 Debug.Log(Countries[i].CountryName + $" 인덱스 : {i}");
             }
+
             Debug.Log("인덱스 정렬 끝");
+
         }
 
         /// <summary>
@@ -167,7 +164,6 @@ namespace Kidnap
                 avg += Countries[i].GetSupportPerCent(type);
 
             avg /= Countries.Count;
-
 
             return avg;
         }

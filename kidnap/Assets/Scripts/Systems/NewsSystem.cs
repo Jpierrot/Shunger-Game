@@ -1,30 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using EnumTypes;
 
 namespace Kidnap
 {
-
-    
-
     public class NewsSystem : Singleton<NewsSystem>
     {
 
-        public string text;
-
         string path = @"C:\Users\user2\Desktop\Jpie\UnityPractice\Shunger-Game\kidnap\Assets\Texts\Afternoon.txt";
-
-        string[] texts;
-
-        void Awake()
-        {
-            StartCoroutine(MessageWriter());
-        }
-
-        void Update()
-        {
-
-        }
 
         public string GetText(DayTime time)
         {
@@ -42,22 +26,6 @@ namespace Kidnap
             }
 
             return path;
-        }
-
-        IEnumerator MessageWriter()
-        {
-            int count = 0;
-            texts = System.IO.File.ReadAllLines(path);
-
-            while (true)
-            {
-                text = texts[count];
-                yield return new WaitForSecondsRealtime(5f);
-                count++;
-
-                if (count == texts.Length) count = 0;
-            }
-
         }
 
     }

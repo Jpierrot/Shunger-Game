@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using EnumTypes;
 
 namespace Kidnap
 {
@@ -50,6 +51,9 @@ namespace Kidnap
 
         }
 
+        /// <summary>
+        /// 데이터 관련 코드는 Awake에서 동작
+        /// </summary>
         private void Awake()
         {
             CharacterUpdate();
@@ -57,15 +61,20 @@ namespace Kidnap
             SetCharacters();
         }
 
+        /// <summary>
+        /// 캐릭터들 타입 재 정렬
+        /// </summary>
         void SetCharacters()
         {
-
             for(int i = 0; i < characters.Count; i++)
             {
                 characters[i].type = (Chars)i;
             }
         }
 
+        /// <summary>
+        /// 캐릭터에 값이 제대로 들어갔는지 검사
+        /// </summary>
         void CharacterUpdate()
         {
             if (characters == null)

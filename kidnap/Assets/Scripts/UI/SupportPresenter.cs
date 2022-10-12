@@ -21,14 +21,9 @@ namespace Kidnap
 
         void UpdateSupport()
         {
-            float per = SupportSystem.Instance.SupportCalc(CharacterSystem.Instance.player.type);
+            float per = CountrySystem.Instance.SupportCalc(CharacterSystem.Instance.player.type);
             _supportText.text = $"ÁöÁöÀ² : <b>{per * 0.01f:P1}</b>";
         }
 
-        // Update is called once per frame
-        void Update()
-        {
-
-        }
     }
 }
