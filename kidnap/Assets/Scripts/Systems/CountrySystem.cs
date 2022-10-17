@@ -26,6 +26,9 @@ namespace Kidnap
         [SerializeField]
         private Chars _favor;
 
+        //인구수
+        private int people = 0; 
+
         //지지율
         private int[] _supportPercent = new int[3] { 0, 0, 0 };
 
@@ -51,6 +54,7 @@ namespace Kidnap
         {
             _favor = (Chars)Random.Range(0, 3);
             SetSupport((int)_favor, _minPercent);
+            people = Random.Range(1000000, 6000000);
         }
 
         /// <summary>
