@@ -35,7 +35,6 @@ namespace Kidnap
                 var obj = Instantiate(CountryObj, parent);
                 obj.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = value.CountryName;
                 obj.transform.GetChild(1).GetComponent<Image>().sprite = value.CountryImage;
-
             }
 
         }

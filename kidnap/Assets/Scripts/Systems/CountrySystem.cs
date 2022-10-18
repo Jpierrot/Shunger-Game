@@ -50,11 +50,12 @@ namespace Kidnap
 
 
         //리스트가 생성된 뒤 시작해야할 메소드.
-        public void Init()
+        public void Init(int min, int max)
         {
             _favor = (Chars)Random.Range(0, 3);
             SetSupport((int)_favor, _minPercent);
-            people = Random.Range(1000000, 6000000);
+
+            people = Random.Range(min, max);
         }
 
         /// <summary>
@@ -125,6 +126,11 @@ namespace Kidnap
     /// </summary>
     public class CountrySystem : Singleton<CountrySystem>
     {
+        [SerializeField]
+        private int minPeople;
+
+        [SerializeField]
+        private int maxPeople;
 
         public List<CountryDatas> CDlist;
 
@@ -140,7 +146,7 @@ namespace Kidnap
             for (int i = 0; i < CDlist.Count; i++)
             {
                 Countries.Add(new Country());
-                Countries[i].Init();
+                Countries[i].Init(minPeople, maxPeople);
             }
 
             //Linq를 이용한 foreach구문 인덱스 구하기
