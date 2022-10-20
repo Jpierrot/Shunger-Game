@@ -8115,6 +8115,7 @@ MonoBehaviour:
   Line: {fileID: 0}
   Lines_Parent: {fileID: 0}
   dots_Parent: {fileID: 659051112}
+  DotArea: {fileID: 659051113}
 --- !u!4 &1399582048
 Transform:
   m_ObjectHideFlags: 0

@@ -31,7 +31,8 @@ namespace Kidnap {
         GameObject dots_Parent;
 
         // Á¡ÀÇ ÁÂÇ¥
-        RectTransform DotRect;
+        [SerializeField]
+        RectTransform DotArea;
 
         private float[] support = new float[10];
 
@@ -96,8 +97,8 @@ namespace Kidnap {
 
         private void Start()
         {
-            _graphHeight = DotRect.rect.height;
-            _graphWidth = DotRect.rect.width;
+            _graphHeight = DotArea.rect.height;
+            _graphWidth = DotArea.rect.width;
             PlusGraph();
             DrawDots();
         }
