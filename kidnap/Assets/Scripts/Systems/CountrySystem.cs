@@ -59,10 +59,10 @@ namespace Kidnap
         }
 
         /// <summary>
-        /// 지지율을 반환해주는 메소드
+        /// 지지율을 반환해주는 코드
         /// </summary>
-        /// <param name="index"></param>
-        /// <returns></returns>
+        /// <param name="type">캐릭터 종류 입력</param>
+        /// <returns>입력된 캐릭터의 지지율 반환</returns>
         public int GetSupportPerCent(Chars type)
         {
             return _supportPercent[(int)type];
