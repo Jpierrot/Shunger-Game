@@ -22,6 +22,9 @@ namespace Kidnap
         //지역 이름
         public string CountryName { get; set; }
 
+        //인구수
+        public int people = 0;
+
         //지역이 선호하는 캐릭터
         [SerializeField]
         private Chars _favor;
@@ -47,17 +50,19 @@ namespace Kidnap
 
 
         //리스트가 생성된 뒤 시작해야할 메소드.
-        public void Init()
+        public void Init(int min, int max)
         {
             _favor = (Chars)Random.Range(0, 3);
             SetSupport((int)_favor, _minPercent);
+
+            people = Random.Range(min, max);
         }
 
         /// <summary>
-        /// 지지율을 반환해주는 메소드
+        /// 지지율을 반환해주는 코드
         /// </summary>
-        /// <param name="index"></param>
-        /// <returns></returns>
+        /// <param name="type">캐릭터 종류 입력</param>
+        /// <returns>입력된 캐릭터의 지지율 반환</returns>
         public int GetSupportPerCent(Chars type)
         {
             return _supportPercent[(int)type];
@@ -121,8 +126,16 @@ namespace Kidnap
     /// </summary>
     public class CountrySystem : Singleton<CountrySystem>
     {
+        /// <summary>
+        /// 최대 
+        /// </summary>
+        [SerializeField, Tooltip("멋")]
+        private int maxPeople;
+        
+        [SerializeField]
+        private int minPeople;
 
-        public List<CountryDatas> CDlist;
+        public List<CountryData> CDlist;
 
         [HideInInspector]
         public List<Country> Countries;
@@ -136,13 +149,14 @@ namespace Kidnap
             for (int i = 0; i < CDlist.Count; i++)
             {
                 Countries.Add(new Country());
-                Countries[i].Init();
+                Countries[i].Init(minPeople, maxPeople);
             }
 
             //Linq를 이용한 foreach구문 인덱스 구하기
             foreach (var (value, i) in CDlist.Select((value, i) => (value, i)))
             {
                 Countries[i].CountryName = value.CountryName;
+                CDlist[i].CountryPop = Countries[i].people;
                 Debug.Log(Countries[i].CountryName + $" 인덱스 : {i}");
             }
 

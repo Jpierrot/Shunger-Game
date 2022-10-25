@@ -6,24 +6,26 @@ using UnityEngine.UI;
 
 namespace StructTypes { 
 
-[System.Serializable]
+
 public struct CountryDatas
 {
 
-    public string CountryName;
-    public Sprite CountryImage;
-
-    public CountryDatas(string name, Sprite image)
-    {
-        CountryName = name;
-        CountryImage = image;
-    }
+    
 
 }
-
-public class CountryData
+    [System.Serializable]
+    public class CountryData
 {
+        public string CountryName;
+        public Sprite CountryImage;
+        public int CountryPop;
 
-}
+        public void CountryDatas(string name, Sprite image, int pop)
+        {
+            CountryPop = pop;
+            CountryName = name;
+            CountryImage = image;
+        }
+    }
 
 }

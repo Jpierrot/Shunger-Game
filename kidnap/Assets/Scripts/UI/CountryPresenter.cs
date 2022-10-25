@@ -4,12 +4,17 @@ using UnityEngine;
 using StructTypes;
 using TMPro;
 using UnityEngine.UI;
+using System;
+using UnityEngine.Events;
 
 namespace Kidnap
 {
 
     public class CountryPresenter : MonoBehaviour
     {
+        [SerializeField]
+        UnityEvent Onclick_event; 
+
         //UI들이 배치될 장소
         [SerializeField]
         Transform parent;
@@ -18,7 +23,10 @@ namespace Kidnap
         [SerializeField]
         GameObject CountryObj;
 
-        List<CountryDatas> list;
+        /// <summary>
+        /// 가져올 
+        /// </summary>
+        List<CountryData> list;
 
         void Start()
         {
@@ -35,6 +43,9 @@ namespace Kidnap
                 var obj = Instantiate(CountryObj, parent);
                 obj.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = value.CountryName;
                 obj.transform.GetChild(1).GetComponent<Image>().sprite = value.CountryImage;
+                obj.transform.GetChild(2).transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = value.CountryPop.ToString();
+
+                obj.GetComponent<Button>().onClick.AddListener(Onclick_event.Invoke);
 
             }
 
