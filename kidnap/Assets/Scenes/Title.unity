@@ -2134,7 +2134,7 @@ MonoBehaviour:
     characterImage: {fileID: 21300000, guid: bead8ecaa3b65e14eada4a6c641ed235, type: 3}
     characterName: b
   - type: 2
-    characterImage: {fileID: 21300000, guid: 3e7df78a28e13f0409b52702a66dd023, type: 3}
+    characterImage: {fileID: 21300000, guid: 7194e4b16633d1946a674244b9dc783e, type: 3}
     characterName: c
   player:
     type: 0

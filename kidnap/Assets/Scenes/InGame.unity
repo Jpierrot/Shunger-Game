@@ -1370,6 +1370,33 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6464d5c7573a63f4ab00087dfef0ef9f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Onclick_event:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 523222847}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
+      - m_Target: {fileID: 1297159156}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   parent: {fileID: 275995254}
   CountryObj: {fileID: 1804068663616610862, guid: 962a1f6118de40e4a808d23da05412c1, type: 3}
 --- !u!1 &222159014
@@ -3539,16 +3566,22 @@ MonoBehaviour:
   CDlist:
   - CountryName: "\uACBD\uAE30"
     CountryImage: {fileID: 21300000, guid: b51da97d0aac535458468680934b4c62, type: 3}
+    CountryPop: 0
   - CountryName: "\uAC15\uC6D0"
     CountryImage: {fileID: 21300000, guid: b51da97d0aac535458468680934b4c62, type: 3}
+    CountryPop: 0
   - CountryName: "\uCDA9\uCCAD"
     CountryImage: {fileID: 21300000, guid: b51da97d0aac535458468680934b4c62, type: 3}
+    CountryPop: 0
   - CountryName: "\uC804\uB77C"
     CountryImage: {fileID: 21300000, guid: b51da97d0aac535458468680934b4c62, type: 3}
+    CountryPop: 0
   - CountryName: "\uACBD\uC0C1"
     CountryImage: {fileID: 21300000, guid: b51da97d0aac535458468680934b4c62, type: 3}
+    CountryPop: 0
   - CountryName: "\uC81C\uC8FC"
     CountryImage: {fileID: 21300000, guid: b51da97d0aac535458468680934b4c62, type: 3}
+    CountryPop: 0
   Countries: []
 --- !u!114 &584655454
 MonoBehaviour:
