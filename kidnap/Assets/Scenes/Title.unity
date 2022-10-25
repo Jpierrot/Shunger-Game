@@ -2130,11 +2130,11 @@ MonoBehaviour:
   - type: 0
     characterImage: {fileID: 21300000, guid: 57112ae6112defa4aa50aa4b38df9821, type: 3}
     characterName: a
-  - type: 0
-    characterImage: {fileID: 1379396952, guid: e3c581db6dc5d794abdeef27c090a8c9, type: 3}
+  - type: 1
+    characterImage: {fileID: 21300000, guid: bead8ecaa3b65e14eada4a6c641ed235, type: 3}
     characterName: b
-  - type: 0
-    characterImage: {fileID: 21300000, guid: 64bb3463eb887e94ba6f1c2ff9021451, type: 3}
+  - type: 2
+    characterImage: {fileID: 21300000, guid: 7194e4b16633d1946a674244b9dc783e, type: 3}
     characterName: c
   player:
     type: 0
