@@ -22,12 +22,12 @@ namespace Kidnap
         //지역 이름
         public string CountryName { get; set; }
 
+        //인구수
+        public int people = 0;
+
         //지역이 선호하는 캐릭터
         [SerializeField]
         private Chars _favor;
-
-        //인구수
-        private int people = 0; 
 
         //지지율
         private int[] _supportPercent = new int[3] { 0, 0, 0 };
@@ -126,13 +126,16 @@ namespace Kidnap
     /// </summary>
     public class CountrySystem : Singleton<CountrySystem>
     {
+        /// <summary>
+        /// 최대 
+        /// </summary>
+        [SerializeField, Tooltip("멋")]
+        private int maxPeople;
+        
         [SerializeField]
         private int minPeople;
 
-        [SerializeField]
-        private int maxPeople;
-
-        public List<CountryDatas> CDlist;
+        public List<CountryData> CDlist;
 
         [HideInInspector]
         public List<Country> Countries;
@@ -153,6 +156,7 @@ namespace Kidnap
             foreach (var (value, i) in CDlist.Select((value, i) => (value, i)))
             {
                 Countries[i].CountryName = value.CountryName;
+                CDlist[i].CountryPop = Countries[i].people;
                 Debug.Log(Countries[i].CountryName + $" 인덱스 : {i}");
             }
 
