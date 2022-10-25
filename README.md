@@ -140,12 +140,12 @@ TMP 형식으로 바꿔 사용중이다.
 ## 9/27 ~ 9/28  
 
 <b>\<GameView></b>  
-<img width="660" alt="image" src="https://user-images.githubusercontent.com/68889645/194261307-c684222c-e24a-451a-9e99-b2b0bb5973fb.png">
+<img width="660" alt="image" src="https://user-images.githubusercontent.com/68889645/194261307-c684222c-e24a-451a-9e99-b2b0bb5973fb.png">  
 조금 바뀐 인 게임 화면 이미지
 
 
 <b>\<GameView></b>  
-<img width="655" alt="image" src="https://user-images.githubusercontent.com/68889645/194261594-79308c36-743b-4edf-9597-4fde5ba7f42b.png">
+<img width="655" alt="image" src="https://user-images.githubusercontent.com/68889645/194261594-79308c36-743b-4edf-9597-4fde5ba7f42b.png">  
 새롭게 들어간 타이틀 화면    
 
 
