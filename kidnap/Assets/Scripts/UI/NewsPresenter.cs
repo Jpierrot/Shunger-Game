@@ -30,7 +30,7 @@ namespace Kidnap {
         {
             while (true)
             {
-                _path = NewsSystem.Instance.GetText(DaySystem.Instance.curTime);
+                _path = NewsData.Instance.GetText(DaySystem.Instance.CurTime);
                 _texts = System.IO.File.ReadAllLines(_path);
 
                 if (parent.transform.childCount < 1)

@@ -79,6 +79,10 @@ namespace Kidnap {
 
         }
 
+        /// <summary>
+        /// 게임 시작전 데이터 받아오기
+        /// 게임 시작전 이 그래프가 업데이트 되는 순간을 지정.
+        /// </summary>
         public void Awake()
         {
             var ins = DaySystem.Instance;
