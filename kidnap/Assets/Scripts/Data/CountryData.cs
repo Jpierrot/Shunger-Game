@@ -1,18 +1,9 @@
-using System.Collections;
-using System.Collections.Generic;
+using EnumTypes;
 using UnityEngine;
-using StructTypes;
 using UnityEngine.UI;
 
-namespace StructTypes { 
+namespace ClassData { 
 
-
-public struct CountryDatas
-{
-
-    
-
-}
     [System.Serializable]
     public class CountryData
 {
@@ -25,6 +16,25 @@ public struct CountryDatas
             CountryPop = pop;
             CountryName = name;
             CountryImage = image;
+        }
+    }
+
+    /// <summary>
+    /// 데이터의 수정이 이루어지기 때문에 클래스가 적합
+    /// </summary>
+    [System.Serializable]
+    public class Characters
+    {
+        public Chars type;
+
+        public Sprite characterImage;
+        public string characterName;
+
+        public Characters(Sprite image, string name, Chars type)
+        {
+            characterImage = image;
+            characterName = name;
+            this.type = type;
         }
     }
 

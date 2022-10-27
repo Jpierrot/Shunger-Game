@@ -2,13 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
-using StructTypes;
+using ClassData;
 using EnumTypes;
 
 namespace Kidnap
 {
     /// <summary>
-    /// 각 지역과 관련된 호감도를 담아낼 클래스
+    /// 각 지역이 담고있어야할 데이터를 보관하는 클래스입니다.
+    /// 그에 필요한 변수들과 다른 클래스에서 값을 얻어올 때 계산 해주는 메소드를 포합하고 있습니다.
     /// </summary>
     [System.Serializable]
     public class Country
@@ -129,7 +130,7 @@ namespace Kidnap
         /// <summary>
         /// 최대 
         /// </summary>
-        [SerializeField, Tooltip("멋")]
+        [SerializeField, Tooltip("")]
         private int maxPeople;
         
         [SerializeField]
