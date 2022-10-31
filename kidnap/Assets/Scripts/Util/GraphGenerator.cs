@@ -6,10 +6,18 @@ using TMPro;
 namespace Kidnap {
 
     /// <summary>
-    /// 선 그래프를 그리는 클래스
+    /// 선 그래프를 그리는 클래스입니다.
+    /// 
+    /// 지금 클래스의 구현 방식은 매일 새로운 점을 찍어서 그래프를 생성하는 것으로 하고있습니다.
+    /// 
+    /// 허나 기존에 있던 점은 굳이 지울 필요가 없는 데이터기 때문에
+    /// 새롭게 추가되는 데이터에 관한 좌표만 추가하는 방식으로 변경하였으면 합니다.
     /// </summary>
     public class GraphGenerator : MonoBehaviour
     {
+        [SerializeField]
+        TextMeshProUGUI Graph_text;
+
         [SerializeField]
         GameObject dayObj;
 
@@ -39,6 +47,9 @@ namespace Kidnap {
 
         private float _graphHeight;
 
+        /// <summary>
+        /// 그래프에 기존에 생성해놨던 점들을 삭제하는 메소드
+        /// </summary>
         void DestroyDots()
         {
             for(int i = 0; i < dots_Parent.transform.childCount; i++)
@@ -47,6 +58,9 @@ namespace Kidnap {
             }
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
         void DrawDots()
         {
             DestroyDots();
