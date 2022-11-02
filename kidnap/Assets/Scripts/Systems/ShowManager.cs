@@ -75,14 +75,13 @@ namespace Kidnap {
         /// <param name="favor_num">증가시킬 호감도의 수치</param>
         public void OnVisit(int index, int favor_num)
         {
-            //지역별 데이터 리스트 받아오기
-            List<Country> list = CountrySystem.Instance.Countries;
-            
+
             //호감도 수치값 입력
-            list[index].Favorability[(int)CharacterSystem.Instance.player.type] += favor_num;
+            CountrySystem.Instance.Countries[index].
+                Favorability[(int)CharacterSystem.Instance.playerType] += favor_num;
 
             //리스트에서 지역 이름 데이터 가져오기
-            var name = list[index].CountryName;
+            var name = CountrySystem.Instance.Countries[index].CountryName;
 
             //값을 넣어주기
             title_text = name + "지역을 방문하였습니다";
