@@ -19,6 +19,8 @@ namespace Kidnap
         /// </summary>
         public Characters player;
 
+        public Chars playerType;
+
         /// <summary>
         /// 플레이어 데이터 변수를 처리할
         /// </summary>
@@ -34,13 +36,14 @@ namespace Kidnap
         }
 
         /// <summary>
-        /// 
+        /// 플레이어 확정
         /// </summary>
         /// <param name="num"></param>
         public void PlayerSet(int num)
         {
             player = characters[num - 1];
             player.type = characters[num - 1].type;
+            playerType = player.type;
 
         }
 
