@@ -22,6 +22,22 @@ namespace EnumTypes
         evening
     }
 
+    public enum ShowType
+    {
+        visit
+    }
+
+    /// <summary>
+    /// 계산에 필요한 enum 유형입니다.
+    /// </summary>
+    public enum Calc
+    {
+        plus,
+        minus
+    }
+
+
+
     public class Enums : MonoBehaviour
     {
 

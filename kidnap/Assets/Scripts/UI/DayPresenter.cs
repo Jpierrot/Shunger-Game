@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using EnumTypes;
 using UnityEngine.UI;
@@ -26,19 +24,24 @@ namespace Kidnap
         //오늘이 며칠인지 관한 텍스트
         public TextMeshProUGUI DayText;
 
-        public TextMeshProUGUI GraphText;
-
         void Start()
         { 
+            // 최초 UI 정렬
             CheckUI();
+
+            // 인스턴스 받아옴
+            var ins = DaySystem.Instance;
+
+            // DaySystem에서 이벤트가 발생시 프레젠터도 호출
+            ins.StartDayEvents.AddListener(CheckUI);
+            ins.OvertimeEvents.AddListener(OnActed);
         }
 
         /// <summary>
         /// 행동력을 소모할때마다 시간대를 변경하는 메소드
         /// </summary>
         public void OnActed()
-        {
-            DaySystem.Instance.OverTime();
+        {             
             CheckUI();
         }
 
@@ -48,22 +51,15 @@ namespace Kidnap
         void CheckUI()
         {
             DayText.text = $"<b>{DaySystem.Instance.curDay}</b> 일";
-            int num = (int)DaySystem.Instance.curTime;
+
+            int num = (int)DaySystem.Instance.CurTime;
             _dayImage.sprite = _dayImages[num];
+
             var a = DaySystem.Instance.TimeColor((DayTime)num);
             a.a = 1;
             _panel.GetComponent<Image>().color = a;
         }
 
-        /// <summary>
-        /// 날짜 변경
-        /// </summary>
-        public void OnDayChanged()
-        {
-            DaySystem.Instance.OverDay();
-            GraphText.text = "(" + DaySystem.Instance.curDay + "일차)";
-            CheckUI();
-        }
-
+        
     }
 }

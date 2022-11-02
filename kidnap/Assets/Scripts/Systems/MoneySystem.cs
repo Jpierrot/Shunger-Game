@@ -1,15 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using EnumTypes;
 
 namespace Kidnap
 {
+    
 
-    public enum Calc
-    {
-        plus,
-        minus
-    }
     /// <summary>
     /// 화폐와 관련된 계산처리를 담당하는 코드
     /// </summary>
