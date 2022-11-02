@@ -56,15 +56,18 @@ namespace Kidnap
             foreach (var value in list)
             {
 
+                //인구수를 작성하는 string 텍스트
+                string poptext = $"{value.CountryPop}000명";
+
                 var obj = Instantiate(CountryObj, parent);
 
                
                 //버튼에 내용들을 부여하는 스크립트
                 obj.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = value.CountryName;
                 obj.transform.GetChild(1).GetComponent<Image>().sprite = value.CountryImage;
-                obj.transform.GetChild(2).transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = value.CountryPop.ToString();
+                obj.transform.GetChild(2).transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = poptext;
+                  
                 obj.name = list.IndexOf(value).ToString();
-
 
                 obj.GetComponent<Button>().onClick.AddListener(Onclick_event.Invoke);
                 obj.GetComponent<Button>().onClick.AddListener(
