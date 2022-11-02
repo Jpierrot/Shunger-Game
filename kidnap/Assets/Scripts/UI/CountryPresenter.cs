@@ -45,9 +45,19 @@ namespace Kidnap
             SetCountry();
         }
 
-        void SetShow(int num)
+        void SetShow(int index)
         {
-            ShowManager.Instance.MakeShow(ShowType.visit, num);
+            ShowManager.Instance.MakeShow(ShowType.visit, index);
+        }
+
+        string TransPop(int pop)
+        {
+            
+
+            int a = pop / 100000;
+            string num = a + "0만명";
+
+            return num;
         }
 
         void SetCountry()
@@ -57,7 +67,7 @@ namespace Kidnap
             {
 
                 //인구수를 작성하는 string 텍스트
-                string poptext = $"{value.CountryPop}000명";
+                string poptext = TransPop(value.CountryPop);
 
                 var obj = Instantiate(CountryObj, parent);
 
