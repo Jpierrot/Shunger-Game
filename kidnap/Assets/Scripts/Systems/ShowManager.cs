@@ -35,7 +35,7 @@ namespace Kidnap {
         /// 현재 사용중인 Show 화면의 유형을 나타내는 데이터
         /// 다른 스크립트에서 호출할 때 MakeShow 메소드를 통해 유형을 선정해서 필요한 메소드를 식별
         /// </summary>
-        [HideInInspector, Tooltip("현재 사용중인 Show 화면의 유형을 나타내는 데이터입니다")]
+        [Tooltip("현재 사용중인 Show 화면의 유형을 나타내는 데이터입니다")]
         public ShowType show;
 
         /// <summary>
@@ -47,6 +47,12 @@ namespace Kidnap {
         /// 임시로 제목에 들어갈 텍스트를 보관하고 있을 string 변수입니다.
         /// </summary>
         string title_text;
+
+        /// <summary>
+        /// 임시로 CountryData에서 넘어온 인수를 보관할 int 변수입니다.
+        /// makeShow메소드를 통해 사용됩니다.
+        /// </summary>
+        int index = 0;
 
         /// <summary>
         /// 애니메이션 연출이 필요할 때 사용할 메소드 입니다.
@@ -67,6 +73,45 @@ namespace Kidnap {
                     break;
             }
         }
+
+        // 버튼 이벤트에서 등록되는 메소드들입니다.
+        #region ShowType
+
+        /// <summary>
+        /// 다른 버튼들이 인스펙터 상에 이벤트에 등록하는 용도로 쓰이는 메소드입니다.
+        /// ShowType을 입력받습니다.
+        /// </summary>
+        [SerializeField]
+        public void SetVisit()
+        {
+            show = ShowType.visit;
+            MakeShow(show, index);
+        }
+
+        /// <summary>
+        /// 다른 버튼들이 인스펙터 상에 이벤트에 등록하는 용도로 쓰이는 메소드입니다.
+        /// ShowType을 입력받습니다.
+        /// 
+        /// </summary>
+        [SerializeField]
+        public void SetVolunteer()
+        {
+            show = ShowType.volunteer;
+            MakeShow(show, index);
+        }
+
+        /// <summary>
+        /// 다른 버튼들이 인스펙터 상에 이벤트에 등록하는 용도로 쓰이는 메소드입니다.
+        /// ShowType을 입력받습니다.
+        /// </summary>
+        [SerializeField]
+        public void SetCall()
+        {
+            show = ShowType.party;
+            MakeShow(show, index);
+        }
+
+        #endregion
 
         /// <summary>
         /// 지역 방문시 변하는 값들을 담당하는 메소드

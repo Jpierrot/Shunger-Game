@@ -24,7 +24,9 @@ namespace EnumTypes
 
     public enum ShowType
     {
-        visit
+        visit,
+        volunteer,
+        party
     }
 
     /// <summary>
