@@ -52,7 +52,20 @@ namespace Kidnap {
         /// 임시로 CountryData에서 넘어온 인수를 보관할 int 변수입니다.
         /// makeShow메소드를 통해 사용됩니다.
         /// </summary>
-        int index = 0;
+        private int index;
+
+        public int Index 
+        {
+            private get {
+
+                return index;
+            }
+
+            set {
+
+                index = value;
+            }
+        }
 
         /// <summary>
         /// 애니메이션 연출이 필요할 때 사용할 메소드 입니다.

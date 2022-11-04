@@ -6548,6 +6548,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   textMeshPro: {fileID: 1680098999}
   Titletext: {fileID: 1909570467}
+  show: 0
 --- !u!4 &1177384097
 Transform:
   m_ObjectHideFlags: 0
@@ -8568,7 +8569,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1177384095}
+      - m_Target: {fileID: 584655449}
         m_TargetAssemblyTypeName: 
         m_MethodName: 
         m_Mode: 1

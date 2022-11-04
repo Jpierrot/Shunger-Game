@@ -47,13 +47,11 @@ namespace Kidnap
 
         void SetShow(int index)
         {
-            ShowManager.Instance.MakeShow(ShowType.visit, index);
+            ShowManager.Instance.Index = index;
         }
 
         string TransPop(int pop)
         {
-            
-
             int a = pop / 100000;
             string num = a + "0¸¸¸í";
 
