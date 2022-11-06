@@ -112,7 +112,7 @@ namespace Kidnap {
                     break;
 
                 case ShowType.party:
-                    OnVolunteer(num, favor_raise_toParty);
+                    OnParty(num, favor_raise_toParty);
                     break;
 
                 case ShowType.volunteer:
@@ -158,7 +158,7 @@ namespace Kidnap {
         /// ShowType을 입력받습니다.
         /// </summary>
         [SerializeField]
-        public void SetCall()
+        public void SetParty()
         {
             var show = ShowType.party;
             MakeShow(show, index);
@@ -186,7 +186,7 @@ namespace Kidnap {
             var name = CountrySystem.Instance.Countries[index].CountryName;
 
             //값을 넣어주기
-            title_text = name + "지역을 방문하였습니다";
+            title_text = name + "지역의 도지사를 만났습니다";
             content_text = name + $"지역의 호감도가 {favor_num} 만큼 증가했습니다";
             
         }
@@ -195,10 +195,29 @@ namespace Kidnap {
         private void OnVolunteer(int index, int favor_num)
         {
 
+            //호감도 수치값 입력
+            CountrySystem.Instance.Countries[index].
+                Favorability[(int)CharacterSystem.Instance.playerType] += favor_num;
+
             //리스트에서 지역 이름 데이터 가져오기
             var name = CountrySystem.Instance.Countries[index].CountryName;
 
-            title_text = name + "지역을 방문하였습니다";
+            title_text = name + "지역에서 봉사활동을 하였습니다";
+            content_text = name + $"지역의 호감도가 {favor_num} 만큼 증가했습니다";
+
+        }
+
+        private void OnParty(int index, int favor_num)
+        {
+
+            //호감도 수치값 입력
+            CountrySystem.Instance.Countries[index].
+                Favorability[(int)CharacterSystem.Instance.playerType] += favor_num;
+
+            //리스트에서 지역 이름 데이터 가져오기
+            var name = CountrySystem.Instance.Countries[index].CountryName;
+
+            title_text = name + "지역행사에 참관했습니다";
             content_text = name + $"지역의 호감도가 {favor_num} 만큼 증가했습니다";
 
         }
