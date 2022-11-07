@@ -45,10 +45,6 @@ namespace Kidnap
             SetCountry();
         }
 
-        void SetShow(int index)
-        {
-            ShowManager.Instance.Index = index;
-        }
 
         string TransPop(int pop)
         {
@@ -69,7 +65,8 @@ namespace Kidnap
 
                 var obj = Instantiate(CountryObj, parent);
 
-               
+                int index = list.IndexOf(value);
+
                 //버튼에 내용들을 부여하는 스크립트
                 obj.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = value.CountryName;
                 obj.transform.GetChild(1).GetComponent<Image>().sprite = value.CountryImage;
@@ -80,12 +77,19 @@ namespace Kidnap
                 obj.GetComponent<Button>().onClick.AddListener(Onclick_event.Invoke);
                 obj.GetComponent<Button>().onClick.AddListener(
                     delegate
-                    { 
-                        SetShow(list.IndexOf(value)); 
+                    {
+                        // 주진우의 원룸을 걸고 이 메소드는 외부에 사용되지 않습니다.
+                        ShowManager.Instance.Index = index;
                     });
             }
 
         }
+
+        /// <summary>
+        /// 버튼에 등록하는 용도로 작성된 메소드 입니다.
+        /// </summary>
+        /// <param name="index"></param>
+        //private void SetShow(int index) => ShowManager.Instance.Index = index;
 
     }
 }

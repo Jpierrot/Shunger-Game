@@ -5,7 +5,7 @@ using EnumTypes;
 using UnityEngine.Events;
 
 namespace Kidnap
-{ 
+{
 
     /// <summary>
     /// 구현 목록 : 
@@ -17,6 +17,9 @@ namespace Kidnap
     /// </summary>
     public class DaySystem : Singleton<DaySystem>
     {
+        // 인스펙터에서 수정하는 변수들
+        #region forInspector variables
+
         [SerializeField]
         public Color[] DayColors = new Color[3];
 
@@ -29,15 +32,26 @@ namespace Kidnap
         //시간대가 바뀔 때 마다 동작할 메소드
         public UnityEvent OvertimeEvents;
 
-        //현재 시간 상태
+        #endregion
+
+        /// 현재 시간 상태를 담고 있는 변수입니다.
+        DayTime curTime;
+
+        /// <summary>
+        /// curTime을 다른 클래스에서 사용하도록 하는 프로퍼티입니다.
+        /// </summary>
         public DayTime CurTime
         {
-            get; private set;
-        }
+            get
+            {
+                return curTime;
+            }
 
-        //바뀔 시간
-        //*사용하지 않는 변수입니다*
-        DayTime nextTime;
+            private set
+            {
+                curTime = value;
+            }
+        }
 
         //시작하는 날짜
         [SerializeField] int StartDay;
@@ -46,7 +60,9 @@ namespace Kidnap
         public int EndDay = 10;
 
         //현재 일자
-         public int curDay = 1;
+        public int curDay = 1;
+
+
 
         /// <summary>
         /// 시스템에 관한 부분은 Awake에서 실행
@@ -67,11 +83,10 @@ namespace Kidnap
         {
 
             Debug.Log("하루 지남");
-            
+
             // 만약 저녁일 경우 시간대를 더이상 증가시키지 않고 하루를 넘김
-            if(CurTime == DayTime.evening)
+            if (CurTime == DayTime.evening)
             {
-                CurTime = 0;
                 OvertimeEvents.Invoke();
                 OverDay();
                 return;
@@ -85,11 +100,11 @@ namespace Kidnap
         }
 
         /// <summary>
-        /// 하루를 강제로 넘기는 메소드입니다.
-        /// 사용할 시 오류를 유발 할 수 있습니다.
+        /// 하루를 넘기는 메소드입니다.
         /// </summary>
         public void OverDay()
         {
+            CurTime = 0;
             curDay++;
             OverDayEvents.Invoke();
         }

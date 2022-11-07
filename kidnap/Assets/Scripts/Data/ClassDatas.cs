@@ -23,14 +23,14 @@ namespace ClassData {
     /// 데이터의 수정이 이루어지기 때문에 클래스가 적합
     /// </summary>
     [System.Serializable]
-    public class Characters
+    public class CharactersDatas
     {
         public Chars type;
 
         public Sprite characterImage;
         public string characterName;
 
-        public Characters(Sprite image, string name, Chars type)
+        public CharactersDatas(Sprite image, string name, Chars type)
         {
             characterImage = image;
             characterName = name;

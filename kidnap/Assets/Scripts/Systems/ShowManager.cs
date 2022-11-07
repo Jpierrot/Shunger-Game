@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using EnumTypes;
 using TMPro;
+using UnityEngine.UI;
 
 namespace Kidnap {
 
@@ -13,6 +14,9 @@ namespace Kidnap {
     /// </summary>
     public class ShowManager : Singleton<ShowManager>
     {
+        /// 고정된 값을 가지고 있는 변수들 입니다.
+        /// 인스펙터상에서 값을 수정할 수 있습니다.
+        #region const variables
 
         /// 지역방문시 올라가는 호감도의 값
         /// 게임 내 변동되지 않으며 인스펙터 상에서 초기 값을 설정할 수 있습니다.
@@ -22,12 +26,14 @@ namespace Kidnap {
         /// 자원봉사시 올라가는 호감도의 값
         /// 게임 내 변동되지 않으며 인스펙터 상에서 초기 값을 설정할 수 있습니다.
         [SerializeField]
-        const int favor_raise_toVolunteer = 10;
+        const int favor_raise_toVolunteer = 15;
 
         /// 
         /// 게임 내 변동되지 않으며 인스펙터 상에서 초기 값을 설정할 수 있습니다.
         [SerializeField]
-        const int favor_raise_toParty = 10;
+        const int favor_raise_toParty = 20;
+
+        #endregion
 
         /// UI와 관련된 변수입니다.
         /// 인스펙터상에서 UI오브젝트를 등록 및 수정할 수 있습니다.
@@ -44,6 +50,13 @@ namespace Kidnap {
         /// </summary>
         [SerializeField]
         TextMeshProUGUI Titletext;
+
+        /// 사전에 이미지들이 등록되는 배열입니다.
+        [SerializeField]
+        Sprite [] images;
+
+        /// 현재 화면에서 보여지고 있는 이미지입니다.
+        Image curImage;
 
         #endregion
 
@@ -78,7 +91,7 @@ namespace Kidnap {
         /// </summary>
         private int index;
 
-        #endregion
+        
 
         /// <summary>
         /// index 멤버 변수를 공유하는 프로퍼티
@@ -96,32 +109,52 @@ namespace Kidnap {
             }
         }
 
+        #endregion
+
         /// <summary>
         /// 애니메이션 연출이 필요할 때 사용할 메소드 입니다.
         /// 다른 클래스를 통해 필요한 순간에 호출됩니다.
         /// </summary>
         /// <param name="type">사용될 애니메이션 유형</param>
         /// <param name="num">들어갈 리스트의 인덱스</param>
-        public void MakeShow(ShowType type, int num)
+        public void MakeShow(ShowType type, int index)
         {
+
+            // 호감도를 임시로 보관할 int형 변수
+            int favor = 0;
+
+            //리스트에서 지역 이름 데이터 가져오기
+            var name = CountrySystem.Instance.Countries[this.index].CountryName;
+
             switch (type)
             {
                 //지역방문시 상황을 체크
                 case ShowType.visit:
-                    OnVisit(num, favor_raise_toVisit);
+                    title_text = name + "지역에서 도지사를 방문";
+                    favor = favor_raise_toVisit;
                     break;
 
                 case ShowType.party:
-                    OnParty(num, favor_raise_toParty);
+                    title_text = name + "지역에서 행사를 참관";
+                    favor = favor_raise_toParty;
                     break;
 
                 case ShowType.volunteer:
-                    OnVolunteer(num, favor_raise_toVolunteer);
+                    title_text = name + "지역에서 봉사활동 참가";
+                    favor = favor_raise_toVolunteer;
                     break;
-                
+
                 default:
+                    Debug.LogError("오류가 발생했습니다");
                     break;
             }
+
+            /// 호감도 수치값 입력
+            CountrySystem.Instance.Countries[index].
+                Favorability[(int)CharacterSystem.Instance.playerType] += favor;
+
+            /// 콘텐츠 텍스트에 들어갈 내용 입력
+            content_text = name + $"지역의 호감도가 {favor} 만큼 증가했습니다";
 
             UpdateText();
         }
@@ -166,64 +199,6 @@ namespace Kidnap {
 
         #endregion
 
-        /// MakeShow에서 사용될 메소드들입니다.
-        /// ShowType 상태마다 각각의 메소드가 존재합니다.
-        #region ShowType 상태마다 동작하는 메소드들
-
-        /// <summary>
-        /// 지역 방문시 변하는 값들을 담당하는 메소드
-        /// </summary>
-        /// <param name="index">리스트 인덱스</param>
-        /// <param name="favor_num">증가시킬 호감도의 수치</param>
-        private void OnVisit(int index, int favor_num)
-        {
-
-            //호감도 수치값 입력
-            CountrySystem.Instance.Countries[index].
-                Favorability[(int)CharacterSystem.Instance.playerType] += favor_num;
-
-            //리스트에서 지역 이름 데이터 가져오기
-            var name = CountrySystem.Instance.Countries[index].CountryName;
-
-            //값을 넣어주기
-            title_text = name + "지역의 도지사를 만났습니다";
-            content_text = name + $"지역의 호감도가 {favor_num} 만큼 증가했습니다";
-            
-        }
-
-
-        private void OnVolunteer(int index, int favor_num)
-        {
-
-            //호감도 수치값 입력
-            CountrySystem.Instance.Countries[index].
-                Favorability[(int)CharacterSystem.Instance.playerType] += favor_num;
-
-            //리스트에서 지역 이름 데이터 가져오기
-            var name = CountrySystem.Instance.Countries[index].CountryName;
-
-            title_text = name + "지역에서 봉사활동을 하였습니다";
-            content_text = name + $"지역의 호감도가 {favor_num} 만큼 증가했습니다";
-
-        }
-
-        private void OnParty(int index, int favor_num)
-        {
-
-            //호감도 수치값 입력
-            CountrySystem.Instance.Countries[index].
-                Favorability[(int)CharacterSystem.Instance.playerType] += favor_num;
-
-            //리스트에서 지역 이름 데이터 가져오기
-            var name = CountrySystem.Instance.Countries[index].CountryName;
-
-            title_text = name + "지역행사에 참관했습니다";
-            content_text = name + $"지역의 호감도가 {favor_num} 만큼 증가했습니다";
-
-        }
-
-        #endregion
-
         /// <summary>
         /// 임시로 저장된 텍스트를 화면으로 동기화 할때 사용합니다.
         /// </summary>
@@ -231,6 +206,15 @@ namespace Kidnap {
         {
             Titletext.text = title_text;
             textMeshPro.text = content_text;
+        }
+
+        /// <summary>
+        /// 나중에 텍스트 애니메이션이 작성될 메소드입니다.
+        /// 지금은 사용하지 않습니다.
+        /// </summary>
+        private void TextAnim()
+        {
+
         }
 
     }

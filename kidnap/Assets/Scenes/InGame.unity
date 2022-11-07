@@ -6584,6 +6584,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   textMeshPro: {fileID: 1680098999}
   Titletext: {fileID: 1909570467}
+  images:
+  - {fileID: 21300000, guid: f3a2486653cf5f04faa1a0df4ed7e992, type: 3}
+  - {fileID: 21300000, guid: 903d5f92b1a991c4aa9b6cd1d2830ae6, type: 3}
+  - {fileID: 0}
 --- !u!4 &1177384097
 Transform:
   m_ObjectHideFlags: 0
@@ -8164,7 +8168,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2f174e2185ca33d47a079b241b317de6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Graph_text: {fileID: 0}
+  Graph_text: {fileID: 705897898}
   dayObj: {fileID: 7390154569261258226, guid: 7b884132377ca54468cc1d9cee7b9cd1, type: 3}
   dotObj: {fileID: 1912524097265227604, guid: b307d032af829cc42944fd788628968b, type: 3}
   Line: {fileID: 0}
@@ -10098,7 +10102,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1818915229
 RectTransform:
   m_ObjectHideFlags: 0

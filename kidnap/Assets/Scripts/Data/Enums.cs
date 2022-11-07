@@ -22,14 +22,19 @@ namespace EnumTypes
         evening
     }
 
+    /// <summary>
+    /// ShowManager에서 사용되는 enum 종류들입니다.
+    /// 
+    /// </summary>
     public enum ShowType
     {
         visit,
-        volunteer,
-        party
+        party,
+        volunteer
     }
 
     /// <summary>
+    /// MoneySystem에서 사용되는 enum 종류들입니다.
     /// 계산에 필요한 enum 유형입니다.
     /// </summary>
     public enum Calc
@@ -38,10 +43,5 @@ namespace EnumTypes
         minus
     }
 
-
-
-    public class Enums : MonoBehaviour
-    {
-
-    }
+    
 }

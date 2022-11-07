@@ -12,19 +12,19 @@ namespace Kidnap
     {
 
         //다른 클래스에서 캐릭터 값을 참조할 리스트
-        public List<Characters> characters;
+        public List<CharactersDatas> characters;
 
         /// <summary>
         /// 플레이어에 관한 데이터를 임시 보관할 
         /// </summary>
-        public Characters player;
+        public CharactersDatas player;
 
         public Chars playerType;
 
         /// <summary>
         /// 플레이어 데이터 변수를 처리할
         /// </summary>
-        public Characters Player
+        public CharactersDatas Player
         {
             get
             {

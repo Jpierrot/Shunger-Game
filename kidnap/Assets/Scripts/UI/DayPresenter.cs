@@ -33,7 +33,7 @@ namespace Kidnap
             var ins = DaySystem.Instance;
 
             // DaySystem에서 이벤트가 발생시 프레젠터도 호출
-            ins.StartDayEvents.AddListener(CheckUI);
+            ins.StartDayEvents.AddListener(OnActed);
             ins.OvertimeEvents.AddListener(OnActed);
         }
 

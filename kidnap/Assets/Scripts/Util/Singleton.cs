@@ -11,8 +11,8 @@ namespace Kidnap
         private static T m_Instance;
 
         /// <summary>
-            /// 이 프로퍼티를 통해서 싱글톤을 붙임
-            /// </summary>
+        /// 이 프로퍼티를 통해서 싱글톤을 사용
+        /// </summary>
         public static T Instance
         {
             get

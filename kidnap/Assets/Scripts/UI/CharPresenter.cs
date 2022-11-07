@@ -24,7 +24,7 @@ namespace Kidnap
 
         private int playerNum = 99;
 
-        private Characters[] characters;
+        private CharactersDatas[] characters;
 
         private void Start()
         {
