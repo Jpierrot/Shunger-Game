@@ -5,18 +5,18 @@ using UnityEngine.UI;
 
 
 [CreateAssetMenu(fileName = "Data", menuName = "ScriptableObject/Image", order = 0)]
-public class ImageScriptableObj : ScriptableObject
+public class CutSceneScriptableObj : ScriptableObject
 {
 
-    public ImageData[] Visit;
+    public CutSceneData[] Visit;
 
-    public ImageData [] Party;
+    public CutSceneData [] Party;
 
-    public ImageData [] Volunteer;
+    public CutSceneData [] Volunteer;
 }
 
 [System.Serializable]
-public struct ImageData
+public struct CutSceneData
 {
     /// 컷씬에서 사용될 이미지입니다
     public Sprite image;
@@ -28,7 +28,7 @@ public struct ImageData
     public string content;
 
     /// 생성자
-    public ImageData(Sprite img, string title, string text)
+    public CutSceneData(Sprite img, string title, string text)
     {
         image = img;
         content = text;
