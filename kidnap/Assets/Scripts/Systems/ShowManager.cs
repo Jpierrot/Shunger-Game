@@ -14,6 +14,12 @@ namespace Kidnap {
     /// </summary>
     public class ShowManager : Singleton<ShowManager>
     {
+        /// ImageScritableObject를 받아오는 변수입니다.
+        /// MakeShow 메소드에서 활용되며,
+        /// 컷씬의 이미지와 제목의 내용을 받아오는데 사용합니다.
+        [SerializeField]
+        CutSceneScriptableObj imgScriptObj;
+
         /// 고정된 값을 가지고 있는 변수들 입니다.
         /// 인스펙터상에서 값을 수정할 수 있습니다.
         #region const variables
@@ -51,16 +57,13 @@ namespace Kidnap {
         [SerializeField]
         TextMeshProUGUI Titletext;
 
-        /// 사전에 이미지들이 등록되는 배열입니다.
-        [SerializeField]
-        Sprite [] images;
-
         /// 현재 화면에서 보여지고 있는 이미지입니다.
+        [SerializeField]
         Image curImage;
 
         #endregion
 
-        /// 현재 사용하지 않게된 변수입니다.
+        /// 현재 사용되지 않는 변수입니다.
         #region deleted variable
 
         /// <summary>
@@ -91,8 +94,6 @@ namespace Kidnap {
         /// </summary>
         private int index;
 
-        
-
         /// <summary>
         /// index 멤버 변수를 공유하는 프로퍼티
         /// </summary>
@@ -119,28 +120,36 @@ namespace Kidnap {
         /// <param name="num">들어갈 리스트의 인덱스</param>
         public void MakeShow(ShowType type, int index)
         {
-
-            // 호감도를 임시로 보관할 int형 변수
+            /// 호감도를 임시로 보관할 int형 변수
             int favor = 0;
 
-            //리스트에서 지역 이름 데이터 가져오기
+            /// 리스트에서 지역 이름 데이터 가져오기
             var name = CountrySystem.Instance.Countries[this.index].CountryName;
 
+            /// ShowType 유형별로 작업이 진행되는 Switch구문입니다.
+            /// 컷씬에 필요한 데이터를 등록하기 위해 사용됩니다.
+            /// 
+            /// 1. 제목 텍스트 등록
+            /// 2. 이미지 스프라이트 등록
+            /// 3. 증가할 호감도 수치 입력의 순서로 실행됩니다.
             switch (type)
             {
-                //지역방문시 상황을 체크
+                /// 지역방문시 상황을 체크
                 case ShowType.visit:
-                    title_text = name + "지역에서 도지사를 방문";
+                    title_text = name + imgScriptObj.Visit[0].title;
+                    curImage.sprite = imgScriptObj.Visit[0].image;
                     favor = favor_raise_toVisit;
                     break;
 
                 case ShowType.party:
-                    title_text = name + "지역에서 행사를 참관";
+                    title_text = name + imgScriptObj.Party[0].title;
+                    curImage.sprite = imgScriptObj.Party[0].image;
                     favor = favor_raise_toParty;
                     break;
 
                 case ShowType.volunteer:
-                    title_text = name + "지역에서 봉사활동 참가";
+                    title_text = name + imgScriptObj.Volunteer[0].title;
+                    curImage.sprite = imgScriptObj.Volunteer[0].image;
                     favor = favor_raise_toVolunteer;
                     break;
 
@@ -151,7 +160,7 @@ namespace Kidnap {
 
             /// 호감도 수치값 입력
             CountrySystem.Instance.Countries[index].
-                Favorability[(int)CharacterSystem.Instance.playerType] += favor;
+                FavorCalc(CharacterSystem.Instance.playerType, favor);
 
             /// 콘텐츠 텍스트에 들어갈 내용 입력
             content_text = name + $"지역의 호감도가 {favor} 만큼 증가했습니다";
@@ -161,7 +170,7 @@ namespace Kidnap {
 
         /// 버튼 이벤트에서 등록되는 메소드들입니다.
         /// ShowType 상태마다 각각의 메소드가 존재합니다.
-        #region 버튼 이벤트에 할당되는 ShowType 관련 메소드들
+        #region a few Methods for button event
 
         /// <summary>
         /// 다른 버튼들이 인스펙터 상에 이벤트에 등록하는 용도로 쓰이는 메소드입니다.

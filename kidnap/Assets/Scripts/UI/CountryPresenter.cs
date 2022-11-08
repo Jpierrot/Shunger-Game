@@ -32,7 +32,7 @@ namespace Kidnap
         GameObject CountryObj;
 
         /// <summary>
-        /// 가져올 
+        /// 가져올 지역별 데이터
         /// </summary>
         List<CountryData> list;
 
@@ -42,7 +42,15 @@ namespace Kidnap
 
             //Rect = parent.GetComponent<RectTransform>();
             list = CountrySystem.Instance.CDlist;
-            SetCountry();
+            SetCountryButtons();
+        }
+
+        /// <summary>
+        /// 각 지역의 지지율을 매일 계산하는 메소드를 추가합니다.
+        /// </summary>
+        void CountryUpdate()
+        {
+            CountrySystem.Instance
         }
 
 
@@ -54,12 +62,11 @@ namespace Kidnap
             return num;
         }
 
-        void SetCountry()
+        void SetCountryButtons()
         {
             ///버튼에 이벤트 부여
             foreach (var value in list)
             {
-
                 //인구수를 작성하는 string 텍스트
                 string poptext = TransPop(value.CountryPop);
 
@@ -78,18 +85,13 @@ namespace Kidnap
                 obj.GetComponent<Button>().onClick.AddListener(
                     delegate
                     {
-                        // 주진우의 원룸을 걸고 이 메소드는 외부에 사용되지 않습니다.
+                        /// 버튼에 등록하는 용도로 작성된 메소드 입니다.
+                        /// 이 메소드는 외부에 사용되지 않습니다.
                         ShowManager.Instance.Index = index;
                     });
             }
 
         }
-
-        /// <summary>
-        /// 버튼에 등록하는 용도로 작성된 메소드 입니다.
-        /// </summary>
-        /// <param name="index"></param>
-        //private void SetShow(int index) => ShowManager.Instance.Index = index;
 
     }
 }

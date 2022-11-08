@@ -10,6 +10,11 @@ namespace Kidnap
     /// <summary>
     /// 각 지역이 담고있어야할 데이터를 보관하는 클래스입니다.
     /// 그에 필요한 변수들과 다른 클래스에서 값을 얻어올 때 계산 해주는 메소드를 포합하고 있습니다.
+    /// 
+    /// 추가로 구현이 필요한 기능 : 
+    /// * 현재 호감도에 따른 지지율을 매일 갱신
+    /// * 인구수에 비례한 지지율 계산
+    /// 
     /// </summary>
     [System.Serializable]
     public class Country
@@ -39,6 +44,9 @@ namespace Kidnap
         //총 호감도
         private int _allFavor = 0;
 
+        //최소 호감도
+        readonly int minFavor = 10;
+
         #endregion
 
         /// <summary>
@@ -46,11 +54,13 @@ namespace Kidnap
         /// </summary>
         /// <param name="type">캐릭터를 지정</param>
         /// <param name="value">증감하는 호감도의 값</param>
-        public void SupportCalc(Chars type, int value)
+        public void FavorCalc(Chars type, int value)
            => Favorability[(int)type] += value;
 
 
-        //리스트가 생성된 뒤 시작해야할 메소드.
+        /// 리스트가 생성된 뒤 수행되는 메소드입니다.
+        /// 다른 클래스에서 Country클래스를 요구하는 리스트를 생성할시
+        /// 이 메소드를 실행해야 합니다.
         public void Init(int min, int max)
         {
             _favor = (Chars)Random.Range(0, 3);
@@ -60,7 +70,15 @@ namespace Kidnap
         }
 
         /// <summary>
-        /// 지지율을 반환해주는 코드
+        /// 변동된 호감도에 따라 새로운 지지율을 계산하는 메소드입니다.
+        /// </summary>
+        public void SetSupportPer()
+        {
+
+        }
+
+        /// <summary>
+        /// 지지율을 반환해주는 메소드
         /// </summary>
         /// <param name="type">캐릭터 종류 입력</param>
         /// <returns>입력된 캐릭터의 지지율 반환</returns>
@@ -82,6 +100,7 @@ namespace Kidnap
         /// 호감도 : 지지율 => 특정 후 호감도 / 전체 호감도 * 전체 지지율
         /// </summary>
         /// <param name="type">해당 클래스가 선호하는 캐릭터</param>
+        /// <param name="min">최소 호감도</param>
         private void SetSupport(int type, int min)
         {
             int minPercent = min;
@@ -127,17 +146,18 @@ namespace Kidnap
     /// </summary>
     public class CountrySystem : Singleton<CountrySystem>
     {
-        /// <summary>
-        /// 최대 
-        /// </summary>
+        /// 최대 인구수
         [SerializeField, Tooltip("")]
         private int maxPeople;
         
+        /// 최소 인구수 
         [SerializeField]
         private int minPeople;
 
+        /// 인스펙터 상에서 사전에 입력받은 데이터
         public List<CountryData> CDlist;
 
+        /// 새롭게 생성되는 List형 데이터
         [HideInInspector]
         public List<Country> Countries;
 
@@ -172,9 +192,10 @@ namespace Kidnap
         /// <returns></returns>
         public float SupportCalc(Chars type)
         {
-
+            /// 평균 지지율 값을 담게되는 flaot형 변수
             float avg = 0;
 
+            /// 모든 지역의 지지율을 더해서 지역 수 만큼으로 나누기
             for(int i = 0; i < Countries.Count; i++)
                 avg += Countries[i].GetSupportPerCent(type);
 
